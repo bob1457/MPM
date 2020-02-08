@@ -2,6 +2,7 @@
     height: 600px;
     // background-image: url('../../assets/images/home-banner5.jpg');
     background-size: cover;
+    margin-top: -65px;
 }
 
 .logo-container {
@@ -45,4 +46,11 @@
 
 .home-card-content {
     color: #676464;
+}
+
+.main-toolbar {
+    background-color: transparent;
+    color: white;
+    /*font-weight: bold;*/
+    position: relative;
 }

@@ -19,4 +19,20 @@
 </ul>
 
 <router-outlet></router-outlet> -->
-<app-home></app-home>
+<mat-toolbar class="main-toolbar">
+    <!-- <img src="http://placehold.it/35x35"> -->
+    <i class="material-icons" style="color: red;">
+      account_balance
+      </i>
+    <span class="toolbar-spacer"></span>
+    <div>
+        <a mat-button [routerLink]="'/'" [routerLinkActive]="['active']" [routerLinkActiveOptions]> home </a>
+        <a mat-button [routerLink]="'/properties'" [routerLinkActive]="['active']"> properties </a>
+        <a mat-button [routerLink]="'/services'" [routerLinkActive]="['active']"> services </a>
+        <a mat-button [routerLink]="'/about'" [routerLinkActive]="['active']"> about </a>
+    </div>
+</mat-toolbar>
+
+<router-outlet></router-outlet>
+
+<!-- <app-home></app-home> -->

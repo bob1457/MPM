@@ -1,0 +1,18 @@
+.main-toolbar {
+    background-color: transparent;
+    color: white;
+    /*font-weight: bold;*/
+    position: relative;
+}
+
+.toolbar-spacer {
+    flex: 1 1 auto;
+}
+
+.active {
+    // padding-left: 5px;
+    // padding-right: 5px;
+    // padding-top: 8px;
+    padding-bottom: 6px;
+    border-bottom: 3px solid red;
+}
