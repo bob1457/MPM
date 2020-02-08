@@ -1,0 +1,44 @@
+<!-- <p>home works! <i class="material-icons">
+  accessibility
+  </i>
+</p> style="background-image: url({{imgpath}})"-->
+<div class="home-banner" [ngStyle]="{'background-image':'url('+imgPath+')'}">
+</div>
+<div class="logo-container">
+    <span class="logo">LOGO</span>
+</div>
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="1%" style="margin-top: 370px;height: 100px; margin-bottom: 20px;;">
+    <div fxLayout="row" fxFlex="20%" fxFlex.xs="5%">
+
+    </div>
+    <div fxLayout="row" fxFlex="20%">
+        <mat-card class="home-card">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image">
+                    <img src="../../assets/images/owners.png" width="55px" height="55px" title="Property Owners" />
+                </div>
+                <mat-card-title class="home-card-title">Property Owners</mat-card-title>
+                <mat-card-subtitle class="home-card-subtitle">Investment Made Easy</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content class="home-card-content">
+                <p>
+                    The Shiba Inu is the smallest. A small... <a href="#">find out more</a>
+                </p>
+            </mat-card-content>
+
+        </mat-card>
+    </div>
+    <div fxLayout="row" fxFlex="20%">
+        <mat-card class="home-card">
+
+        </mat-card>
+    </div>
+    <div fxLayout="row" fxFlex="20%">
+        <mat-card class="home-card">
+
+        </mat-card>
+    </div>
+    <div fxLayout="row" fxFlex="20%">
+
+    </div>
+</div>
