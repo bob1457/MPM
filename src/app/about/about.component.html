@@ -2,3 +2,108 @@
 <div class="about-banner">
     <!-- <mat-toolbar class="main-toolbar"></mat-toolbar> -->
 </div>
+<!--<div class="row">
+    <div class="jumbotron">
+        <h1 class="display-4">Together, we succeed</h1>
+    </div>
+</div> -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mb-5">
+            <div class="jumbotron" style="margin-top: 25px;">
+                <h2 class="display-4">About Us
+                    <span style="font-size: 1em; color: brown;">
+                  <i class="material-icons">
+                    accessibility_new
+                  </i>
+                </span>
+                </h2>
+                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            </div>
+
+            <hr>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A deserunt neque tempore recusandae animi soluta quasi? Asperiores rem dolore eaque vel, porro, soluta unde debitis aliquam laboriosam. Repellat explicabo, maiores!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis optio neque consectetur consequatur magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum, alias, adipisci nesciunt voluptate. Voluptatum.</p>
+            <a class="btn btn-primary btn-lg" href="#">Call to Action &raquo;</a>
+        </div>
+        <div class="col-md-4 mb-5" style="margin-top: 25px;">
+            <!-- <h2>Our Team</h2>
+            <hr>
+            <address>
+              <strong>Start Bootstrap</strong>
+              <br>3481 Melrose Place
+              <br>Beverly Hills, CA 90210
+              <br>
+            </address>
+            <address>
+              <abbr title="Phone">P:</abbr>
+              (123) 456-7890
+              <br>
+              <abbr title="Email">E:</abbr>
+              <a href="mailto:#">name@example.com</a>
+            </address> -->
+            <mat-card class="contact-card">
+                <!-- <mat-card-header>
+                    <mat-card-title>Title</mat-card-title>
+                    <mat-card-subtitle>Subtitle</mat-card-subtitle>
+                </mat-card-header> -->
+                <img matCardImage src="../../assets/images/contact_us.jpg">
+                <mat-card-content>
+                    <address>
+                    <strong>MPM Management</strong>
+                    <br>3481 Melrose Place
+                    <br>Beverly Hills, CA 90210
+                    <br>
+                  </address>
+                    <address>
+                    <abbr title="Phone">P:</abbr>
+                    (123) 456-7890
+                    <br>
+                    <abbr title="Email">E:</abbr>
+                    <a href="mailto:#">name@example.com</a>
+                  </address>
+                    <p class="form-header">Contact form</p>
+                    <form style="margin-top: -20px;">
+                        <div class="form-container" style="border: 1px solid grey;">
+                            <mat-form-field class="form-content" style="margin-top: 20px;">
+                                <mat-icon matSuffix>person</mat-icon>
+                                <input matInput placeholder="Your Name">
+                            </mat-form-field>
+
+                            <mat-form-field class="form-content">
+                                <mat-icon matSuffix>phone</mat-icon>
+                                <input matInput placeholder="Your Telepone">
+                            </mat-form-field>
+
+                            <mat-form-field class="form-content">
+                                <mat-icon matSuffix>email</mat-icon>
+                                <input matInput placeholder="Your Email">
+                            </mat-form-field>
+
+                            <mat-form-field class="form-content">
+                                <mat-select placeholder="Select">
+                                    <mat-option value="1">Home Owner</mat-option>
+                                    <mat-option value="2">Home Renter</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field class="form-content">
+                                <textarea matInput placeholder="Your message"></textarea>
+                            </mat-form-field>
+                            <button class="form-content" mat-raised-button color="primary" style="margin-bottom: 10px;" (click)="submit()">Submit</button>
+                            <button class="form-content" mat-raised-button color="accent" style="margin-bottom: 15px;" (click)="clear()">Reset</button>
+                        </div>
+                    </form>
+
+                </mat-card-content>
+                <!--<mat-card-actions align="start">
+                     <button mat-button (click)="">Action1</button>
+
+                </mat-card-actions>
+                <mat-card-footer>
+                    Footer
+                </mat-card-footer> -->
+            </mat-card>
+        </div>
+    </div>
+</div>

@@ -4,3 +4,33 @@
     background-size: cover;
     margin-top: -65px;
 }
+
+.slogan {}
+
+.contact-card {
+    background: #fafafa;
+    color: #212121;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container>* {
+    width: 90%;
+}
+
+.form-content {
+    // width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-header {
+    font-weight: bold;
+    background: #45b8f7;
+    padding: 10px;
+    color: white;
+    ;
+}
