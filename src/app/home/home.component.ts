@@ -13,7 +13,8 @@ export class HomeComponent implements OnInit {
       'home-banner2.jpg',
       'home-banner3.jpg',
       'home-banner4.jpg',
-      'home-banner5.jpg'
+      'home-banner5.jpg',
+      'home-banner6.jpg'
     ];
 
   bgImg = '';
