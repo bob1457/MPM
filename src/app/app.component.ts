@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from './account/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'realconcept';
+  title = 'REALConcepts';
 
-  constructor(public router: Router) {}
+  constructor(public router: Router, private authService: AuthService) {}
 
-
+  login() {
+    this.authService.login();
+    console.log('login...');
+  }
 }
