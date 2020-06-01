@@ -9,11 +9,12 @@ export const environment = {
   authConfig: {
     authority: 'https://localhost:44399/',
     client_id: 'client_id_js',
+    // redirect_uri: 'http://localhost:4200/auth-callback',
     redirect_uri: 'http://localhost:4200',
     response_type: 'code',
     scope: 'openid rc.scope ApiOne ApiTwo', // need update
-    post_logout_redirect_uri: 'http://localhost:4200',
-    userStore: new Oidc.WebStorageStateStore({ store: window.localStorage })
+    post_logout_redirect_uri: 'http://localhost:4200' //,
+    // userStore: new Oidc.WebStorageStateStore({ store: window.localStorage })
 
     // silent_redirect_uri: 'http://localhost:4200/silent-renew.html',
     // automaticSilentRenew: true

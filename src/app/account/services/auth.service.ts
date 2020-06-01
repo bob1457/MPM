@@ -3,6 +3,7 @@ import { UserManager, User } from 'oidc-client';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -23,7 +24,7 @@ export class AuthService {
   //   loadUserInfo: true
   // });
 
-  private userManager : UserManager= new UserManager(environment.authConfig);
+  private userManager: UserManager = new UserManager(environment.authConfig);
   // public authStatusChagned: EventEmitter<User> = new EventEmitter();
 
 
@@ -34,9 +35,10 @@ export class AuthService {
   // Observable navItem stream
   authNavStatus$ = this.authNavStatusSource.asObservable();
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private httpClient: HttpClient) { }
 
   login() {
+    debugger;
     this.userManager.signinRedirect();
   }
 
@@ -70,9 +72,20 @@ export class AuthService {
 
   get name(): string {
     return this.user != null ? this.user.profile.name : '';
-}
+  }
 
   async signout() {
     await this.userManager.signoutRedirect();
-}
+  }
+
+  getApi() {
+    this.httpClient.get('http://localhost:25540/secret').subscribe(res => {
+      console.log(res);
+    });
+  }
+
+  Logout() {
+    console.log('sign-out');
+    this.userManager.signinRedirect();
+  }
 }
