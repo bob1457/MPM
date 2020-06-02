@@ -11,6 +11,7 @@ import { OidcSecurityService } from 'angular-auth-oidc-client';
 export class AppComponent implements OnInit {
   title = 'REALConcepts';
 
+
   authenticated = false;
 
   constructor(public router: Router,
@@ -27,9 +28,17 @@ export class AppComponent implements OnInit {
   login() {
     debugger;
     // this.authService.login();
-    console.log('start login...');
+    // console.log('start login...');
     this.oidcSecurityService.authorize();
-    console.log('login...');
+
+    this.oidcSecurityService.authorize((authUrl) => {
+      // handle the authorrization URL
+      window.open(authUrl, '_blank', 'toolbar=0,location=0,menubar=0');
+  });
+
+    // console.log('login...');
+
+    // window.open(authUrl, '_blank', 'toolbar=0,location=0,menubar=0');
   }
 
   getApi() {

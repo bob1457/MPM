@@ -5,6 +5,7 @@ import { AccountRoutingModule } from './account-routing.module';
 
 
 import { AuthModule, LogLevel, OidcConfigService } from 'angular-auth-oidc-client';
+import * as Oidc from 'oidc-client';
 
 
 export function configureAuth(oidcConfigService: OidcConfigService) {
@@ -19,6 +20,7 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
           silentRenew: true,
           silentRenewUrl: `${window.location.origin}/silent-renew.html`,
           logLevel: LogLevel.Debug,
+          // storage: new Oidc.WebStorageStateStore({store: window.localStorage})
       });
 }
 

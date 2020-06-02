@@ -3,7 +3,8 @@ import { UserManager, User } from 'oidc-client';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
 
 
 
@@ -24,6 +25,8 @@ export class AuthService {
   //   loadUserInfo: true
   // });
 
+  headers: any;
+
   private userManager: UserManager = new UserManager(environment.authConfig);
   // public authStatusChagned: EventEmitter<User> = new EventEmitter();
 
@@ -35,7 +38,9 @@ export class AuthService {
   // Observable navItem stream
   authNavStatus$ = this.authNavStatusSource.asObservable();
 
-  constructor(private router: Router, private httpClient: HttpClient) { }
+  constructor(private router: Router,
+              private httpClient: HttpClient,
+              public oidcSecurityService: OidcSecurityService) { }
 
   login() {
     debugger;
@@ -79,7 +84,19 @@ export class AuthService {
   }
 
   getApi() {
-    this.httpClient.get('http://localhost:25540/secret').subscribe(res => {
+    debugger;
+
+    const token = this.oidcSecurityService.getToken();
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + token
+      })
+    };
+
+    // this.setHeaders();
+
+    this.httpClient.get('http://localhost:25540/secret', httpOptions ).subscribe(res => {
       console.log(res);
     });
   }
@@ -87,5 +104,20 @@ export class AuthService {
   Logout() {
     console.log('sign-out');
     this.userManager.signinRedirect();
+  }
+
+
+  private setHeaders() {
+    debugger;
+    this.headers = new HttpHeaders();
+    this.headers = this.headers.set('Content-Type', 'application/json');
+    this.headers = this.headers.set('Accept', 'application/json');
+
+    const token = this.oidcSecurityService.getToken();
+
+    if (token !== '') {
+      const tokenValue = 'Bearer ' + token;
+      this.headers = this.headers.set('Authorization', tokenValue);
+    }
   }
 }
