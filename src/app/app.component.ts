@@ -28,13 +28,14 @@ export class AppComponent implements OnInit {
   login() {
     debugger;
     // this.authService.login();
+
     // console.log('start login...');
     this.oidcSecurityService.authorize();
 
-    this.oidcSecurityService.authorize((authUrl) => {
-      // handle the authorrization URL
-      window.open(authUrl, '_blank', 'toolbar=0,location=0,menubar=0');
-  });
+  //   this.oidcSecurityService.authorize((authUrl) => {
+  //     // handle the authorrization URL
+  //     window.open(authUrl, '_blank', 'toolbar=0,location=0,menubar=0');
+  // });
 
     // console.log('login...');
 

@@ -12,13 +12,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccountModule, configureAuth } from './account/account.module';
 import { HttpClientModule } from '@angular/common/http';
 import { OidcConfigService, AuthModule } from 'angular-auth-oidc-client';
+import { PropertyComponent } from './property/property.component';
+import { ClientServiceComponent } from './client-service/client-service.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    PropertyComponent,
+    ClientServiceComponent
   ],
   imports: [
     BrowserModule,

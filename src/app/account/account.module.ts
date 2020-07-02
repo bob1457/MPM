@@ -11,15 +11,16 @@ import * as Oidc from 'oidc-client';
 export function configureAuth(oidcConfigService: OidcConfigService) {
   return () =>
       oidcConfigService.withConfig({
-          stsServer: 'https://localhost:44399',
-          redirectUrl: 'http://localhost:4200', // window.location.origin,
-          postLogoutRedirectUri:'http://localhost:4200', //  window.location.origin,
-          clientId: 'client_id_js',
-          scope: 'openid rc.scope ApiOne ApiTwo',
-          responseType: 'code',
-          silentRenew: true,
-          silentRenewUrl: `${window.location.origin}/silent-renew.html`,
-          logLevel: LogLevel.Debug,
+          // stsServer: 'https://localhost:44399',
+          // redirectUrl: 'http://localhost:4200', // window.location.origin,
+          // postLogoutRedirectUri:'http://localhost:4200', //  window.location.origin,
+          // clientId: 'client_id_js',
+          // scope: 'openid rc.scope ApiOne ApiTwo',
+          // responseType: 'code',
+          // silentRenew: true,
+          // silentRenewUrl: `${window.location.origin}/silent-renew.html`,
+          // logLevel: LogLevel.Debug,
+
           // storage: new Oidc.WebStorageStateStore({store: window.localStorage})
       });
 }
