@@ -17,6 +17,14 @@
     border-bottom: 3px solid red;
 }
 
+a {
+    color: #063052;
+}
+
+a:hover {
+    color: rgb(228, 201, 150);
+}
+
 a:link {
-    color: white;
+    text-decoration: none;
 }
