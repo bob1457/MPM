@@ -11,9 +11,9 @@ import { AboutComponent } from './about/about.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccountModule, configureAuth } from './account/account.module';
 import { HttpClientModule } from '@angular/common/http';
-import { OidcConfigService, AuthModule } from 'angular-auth-oidc-client';
 import { PropertyComponent } from './property/property.component';
 import { ClientServiceComponent } from './client-service/client-service.component';
+import { ShowDetailsComponent } from './show-details/show-details.component';
 
 
 @NgModule({
@@ -22,14 +22,14 @@ import { ClientServiceComponent } from './client-service/client-service.componen
     HomeComponent,
     AboutComponent,
     PropertyComponent,
-    ClientServiceComponent
+    ClientServiceComponent,
+    ShowDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AppMaterialModule,
     AccountModule,
-    AuthModule.forRoot(),
     BrowserAnimationsModule,
     FlexLayoutModule,
     FormsModule,
@@ -37,13 +37,13 @@ import { ClientServiceComponent } from './client-service/client-service.componen
     ReactiveFormsModule
   ],
   providers: [
-    OidcConfigService,
-        {
-            provide: APP_INITIALIZER,
-            useFactory: configureAuth,
-            deps: [OidcConfigService],
-            multi: true,
-        },
+    // OidcConfigService,
+    //     {
+    //         provide: APP_INITIALIZER,
+    //         useFactory: configureAuth,
+    //         deps: [OidcConfigService],
+    //         multi: true,
+    //     },
   ],
   bootstrap: [AppComponent]
 })
