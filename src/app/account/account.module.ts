@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { AccountRoutingModule } from './account-routing.module';
 
-
 // import { AuthModule, LogLevel, OidcConfigService } from 'angular-auth-oidc-client';
 // import * as Oidc from 'oidc-client';
 

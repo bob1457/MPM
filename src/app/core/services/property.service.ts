@@ -12,7 +12,7 @@ export class PropertyService {
   constructor(private httpClient: HttpClient) { }
 
   GetAllListings() {
-    return this.httpClient.get<PropertyListing[]>(`${this.serverUrl}/api/Listing/show'`);
+    return this.httpClient.get<PropertyListing[]>(`${this.serverUrl}/api/Listing/show`);
   }
 
   GetListingDetails(id) {

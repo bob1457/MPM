@@ -20,13 +20,15 @@ export class PropertyComponent implements OnInit {
   ];
 
   listing$: Observable<PropertyListing[]>;
-  serverUrl: 'http://localhost:63899/';
+  serverUrl = 'http://localhost:63899/';
 
   constructor(private propertyService: PropertyService) { }
 
   ngOnInit(): void {
 
     this.listing$ = this.propertyService.GetAllListings();
+
+    console.log('server url', this.serverUrl);
 
   }
 

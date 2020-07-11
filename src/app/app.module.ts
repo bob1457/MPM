@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AccountModule, configureAuth } from './account/account.module';
+import { AccountModule } from './account/account.module';
 import { HttpClientModule } from '@angular/common/http';
 import { PropertyComponent } from './property/property.component';
 import { ClientServiceComponent } from './client-service/client-service.component';
