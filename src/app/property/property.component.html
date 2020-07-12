@@ -7,15 +7,9 @@
         <div class="col-lg-8 col-mb-5">
             <header class="jumbotron my-4">
 
-                <h1 class="display-3"><img src="../../assets/images/4rent.jpg" height="100px" width="100px" style="border-radius: 50%; margin-right: 25px;">A For Rent!</h1>
+                <h1 class="display-3"><img src="../../assets/images/4rent.jpg" height="100px" width="100px" style="border-radius: 50%; margin-right: 25px;">All For Rent!</h1>
                 <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
                 <!-- <a href="#" class="btn btn-outline-dark btn-lg">Find</a> -->
-                <mat-form-field appearance="fill" style="margin-bottom: -30px;">
-                    <mat-icon matSuffix>search</mat-icon>
-                    <mat-label>Find...</mat-label>
-                    <input matInput>
-                    <!-- <span class="icon-pos" matPrefix><mat-icon>search</mat-icon> &nbsp;</span> -->
-                </mat-form-field>
             </header>
         </div>
         <div class="col-lg-4 col-mb-5" style="margin-top: 25px;">
@@ -26,7 +20,7 @@
                     <span class="material-icons" style="vertical-align: bottom;margin-right: 15px; color: red;">
                       fingerprint
                     </span>
-                    <span><span style="font-weight: bold;">Home owners:</span>, if you have investment properties in the markett, and would like to have cash flow, We can help</span>
+                    <span><span style="font-weight: bold;">Home owners:</span>, if you have investment properties in the market, and would like to have cash flow, We can help</span>
                     <p style="margin-top: 5px;">
                         <button [routerLink]="'/services'" mat-stroked-button>For more details</button>
                     </p>
@@ -36,108 +30,9 @@
         </div>
     </div>
 
-    <div class="row">
-        <!-- <ul style="width: 100%;"> -->
-        <!-- <div *ngFor="let list of listing" class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-                <img class="card-img-top" attr.src="{{list.img}}" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">{{list.title}}</h4>
-                    <p class="card-text">{{list.content}}</p>
-                </div>
-                <div class="card-footer">
-                    <button routerLink="/details/{{list.id}}" class="btn btn-outline-dark">Find Details!</button>
-                </div>
-            </div>
-        </div> -->
-        <div *ngFor="let list of listing$ | async" class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-                <img class="card-img-top" attr.src="{{serverUrl}}{{list.rentalProperty.propertyImg[0].propertyImgUrl}}" width="100" height="180" alt="">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-5" style="margin-right: -10px;">
-                            <h4 class="card-title">{{list.title}}</h4>
-                        </div>
-                        <div class="col-md-7" style="margin-left: -10px;">
-                            <p class="card-text">{{list.listingDesc}}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <button routerLink="/details/{{list.id}}" class="btn btn-outline-dark">Find Details!</button>
-                </div>
-            </div>
-        </div>
-        <!-- </ul> -->
 
-        <!-- <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card h-100">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Find Out More!</a>
-                </div>
-            </div>
-        </div>
+    <!-- <app-show-details></app-show-details> -->
+    <router-outlet></router-outlet>
 
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card h-100">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Find Out More!</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card h-100">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Find Out More!</a>
-                </div>
-            </div>
-        </div>
-
-
-
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card h-100">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Find Out More!</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card h-100">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Find Out More!</a>
-                </div>
-            </div>
-        </div> -->
-
-    </div>
-    <app-show-details></app-show-details>
 
 </div>

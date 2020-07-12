@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PropertyComponent } from './property/property.component';
 import { ClientServiceComponent } from './client-service/client-service.component';
 import { ShowDetailsComponent } from './show-details/show-details.component';
+import { ShowListingComponent } from './show-listing/show-listing.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ShowDetailsComponent } from './show-details/show-details.component';
     AboutComponent,
     PropertyComponent,
     ClientServiceComponent,
-    ShowDetailsComponent
+    ShowDetailsComponent,
+    ShowListingComponent
   ],
   imports: [
     BrowserModule,

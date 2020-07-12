@@ -1,0 +1,49 @@
+<!-- <p>show-listing works!</p> -->
+<div class="row">
+    <!-- <ul style="width: 100%;"> -->
+    <!-- <div *ngFor="let list of listing" class="col-lg-3 col-md-6 mb-4">
+      <div class="card">
+          <img class="card-img-top" attr.src="{{list.img}}" alt="">
+          <div class="card-body">
+              <h4 class="card-title">{{list.title}}</h4>
+              <p class="card-text">{{list.content}}</p>
+          </div>
+          <div class="card-footer">
+              <button routerLink="/details/{{list.id}}" class="btn btn-outline-dark">Find Details!</button>
+          </div>
+      </div>
+  </div> -->
+    <div class="row">
+        <div class="container" style="margin-left: 15px; margin-right: 15px;">
+            <mat-form-field appearance="fill">
+                <mat-icon matSuffix>search</mat-icon>
+                <mat-label>Find...</mat-label>
+                <input matInput>
+                <!-- <span class="icon-pos" matPrefix><mat-icon>search</mat-icon> &nbsp;</span> -->
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row" style="padding-left: 15px; padding-right: 15px;">
+        <div *ngFor="let list of listing$ | async" class="col-lg-3 col-md-6 mb-4">
+            <div class="card">
+                <img class="card-img-top" attr.src="{{serverUrl}}{{list.rentalProperty.propertyImg[0].propertyImgUrl}}" width="100" height="180" alt="">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-5" style="margin-right: -10px;">
+                            <h4 class="card-title">{{list.title}}</h4>
+                        </div>
+                        <div class="col-md-7" style="margin-left: -10px;">
+                            <p class="card-text">{{list.listingDesc}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button routerLink="details/{{list.id}}" class="btn btn-outline-dark">Find Details!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
