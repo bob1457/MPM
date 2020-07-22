@@ -27,9 +27,6 @@ export class PropertyComponent implements OnInit {
   ngOnInit(): void {
 
     this.listing$ = this.propertyService.GetAllListings();
-
-    console.log('server url', this.serverUrl);
-
   }
 
 }

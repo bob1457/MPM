@@ -1,5 +1,5 @@
 <!-- <p>show-details works!</p> -->
-<div class="row">
+<div class="row" *ngIf="listing$ | async">
     <div class="col-lg-8 col-mb-5">
         <div class="row">
             <div class="col-md-12">
@@ -13,24 +13,41 @@
         </div>
         <div class="row">
             <div class="col-md-5 col-sm-12">
-                <img src="http://placehold.it/300x200" style="width: 100%;">
+                <img attr.src="{{serverUrl}}{{listing.rentalProperty.propertyImg[imgIndex].propertyImgUrl}}" width="250" height="180" alt="">
             </div>
             <div class="col-md-7">
                 <div class="row">
-                    <p>Address:</p>
-                    <p></p>
-                </div>
-                <div class="row">
+                    <div style="margin-right: 25px; font-weight: bold;">Address:</div>
                     <div>
-                        more images
+                        {{listing.rentalProperty.address.streetNum}}<br> {{listing.rentalProperty.address.city}} {{listing.rentalProperty.address.stateProvince}}<br> {{listing.rentalProperty.address.zipPostCode}}
+                        <br> {{listing.rentalProperty.address.country}}
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 15px;">
+                    <div>
+                        <ul style="list-style: none;">
+                            <!-- <a  > -->
+                            <a *ngFor="let img of listing.rentalProperty.propertyImg let i = index;" style="display: inline;cursor: pointer;" (click)="showFullsize(i)">
+                                <img attr.src="{{serverUrl}}{{img.propertyImgUrl}}" width="50px" height="50px" style="margin-right: 5px;">
+                                <!-- {{i}} -->
+                            </a>
+                            <!-- </a> -->
+                        </ul>
                     </div>
                 </div>
 
             </div>
         </div>
 
-        <div>
-            Descriptions
+        <div style="margin-bottom: 25px;margin-top: 30px;">
+            {{listing.listingDesc}}
+        </div>
+        <div style="margin-bottom: 25px;">
+            <span style="font-weight: bold;">Contact:</span>
+            <p>
+                {{listing.contact.contactName}}<br> TEL: {{listing.contact.contactTel}}<br> EMAIL: {{listing.contact.contactEmail}}
+            </p>
         </div>
 
     </div>

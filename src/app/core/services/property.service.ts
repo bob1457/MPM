@@ -16,7 +16,7 @@ export class PropertyService {
   }
 
   GetListingDetails(id) {
-    return this.httpClient.get<PropertyListing>(`${this.serverUrl}/api/Listing/show/${id}`);
+    return this.httpClient.get<PropertyListing>(`${this.serverUrl}/api/Listing/showdetails/${id}`);
   }
 
 
