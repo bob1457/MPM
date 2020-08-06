@@ -73,34 +73,34 @@
                     <a href="mailto:#">name@example.com</a>
                   </address>
                     <p class="form-header">Contact Form</p>
-                    <form style="margin-top: -20px;">
+                    <form style="margin-top: -20px;" [formGroup]="aboutForm" (ngSubmit)="submit()">
                         <div class="form-container" style="border: 1px solid grey;">
                             <mat-form-field class="form-content" style="margin-top: 20px;">
                                 <mat-icon matSuffix>person</mat-icon>
-                                <input matInput placeholder="Your Name">
+                                <input formControlName="name" matInput placeholder="Your Name">
                             </mat-form-field>
 
                             <mat-form-field class="form-content">
                                 <mat-icon matSuffix>phone</mat-icon>
-                                <input matInput placeholder="Your Telepone">
+                                <input formControlName="tel" matInput placeholder="Your Telepone">
                             </mat-form-field>
 
                             <mat-form-field class="form-content">
                                 <mat-icon matSuffix>email</mat-icon>
-                                <input matInput placeholder="Your Email">
+                                <input formControlName="email" matInput placeholder="Your Email">
                             </mat-form-field>
 
                             <mat-form-field class="form-content">
-                                <mat-select placeholder="Select">
+                                <mat-select formControlName="type" placeholder="Home owner or Home Renter" #mySelect (selectionChange)="onTypeChange(mySelect.value)">
                                     <mat-option value="1">Home Owner</mat-option>
                                     <mat-option value="2">Home Renter</mat-option>
                                 </mat-select>
                             </mat-form-field>
 
                             <mat-form-field class="form-content">
-                                <textarea matInput placeholder="Your message"></textarea>
+                                <textarea formControlName="message" matInput placeholder="Your message"></textarea>
                             </mat-form-field>
-                            <button class="form-content" mat-raised-button color="primary" style="margin-bottom: 10px;" (click)="submit()">Submit</button>
+                            <button class="form-content" mat-raised-button color="primary" style="margin-bottom: 10px;">Submit</button>
                             <button class="form-content" mat-raised-button color="accent" style="margin-bottom: 15px;" (click)="clear()">Reset</button>
                         </div>
                     </form>

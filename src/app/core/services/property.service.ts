@@ -19,6 +19,10 @@ export class PropertyService {
     return this.httpClient.get<PropertyListing>(`${this.serverUrl}/api/Listing/showdetails/${id}`);
   }
 
+  SentRentalApplication(data) {
+    return this.httpClient.post(`${this.serverUrl}/api/RentalApplication/add`, data);
+  }
+
 
 
 }
