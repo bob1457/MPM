@@ -77,12 +77,20 @@
 
                         <mat-form-field class="form-content">
                             <mat-icon matSuffix>phone</mat-icon>
-                            <input formControlName="contactTel" matInput placeholder="Contact Telepone">
+                            <input formControlName="contactTel" matInput placeholder="Tel: all numbers, no space or dash">
+                        </mat-form-field>
+
+                        <mat-form-field class="form-content">
+                            <mat-icon matSuffix>phone</mat-icon>
+                            <input formControlName="contactSms" matInput placeholder="SMS: all numbers, no space or dash">
                         </mat-form-field>
 
                         <mat-form-field class="form-content">
                             <mat-icon matSuffix>email</mat-icon>
                             <input formControlName="contactEmail" matInput placeholder="Contact Email">
+                            <!-- <div *ngIf="contactEmail.errors?.email">
+                                Primary Email not valid.
+                            </div> -->
                         </mat-form-field>
 
                         <mat-form-field class="form-content">
@@ -132,7 +140,7 @@
                             <mat-radio-button [value]=1 checked style="padding-right: 10px;margin-top: 10px;margin-bottom: 5px;">Email</mat-radio-button>
                             <mat-radio-button [value]=2 style="margin-top: 10px;margin-bottom: 5px;">SMS Text</mat-radio-button>
                         </mat-radio-group>
-                        <button type="submit" class="form-content" mat-raised-button color="primary" style="margin-bottom: 10px;">Submit</button>
+                        <button type="submit" [disabled]="!appForm.valid" class="form-content" mat-raised-button color="primary" style="margin-bottom: 10px;">Submit</button>
                         <img *ngIf="loading" class="symbol" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
                         />
                         <button type="button" class="form-content" mat-raised-button color="accent" style="margin-bottom: 15px;" (click)="clear()">Reset</button>

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { PropertyListing } from '../core/models/property-listing';
 import { PropertyService } from '../core/services/property.service';
 import { ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -30,7 +30,7 @@ export class ShowDetailsComponent implements OnInit {
   constructor(private location: Location,
               private actRoute: ActivatedRoute,
               private formBuilder: FormBuilder,
-              private _snackBar: MatSnackBar,
+              private snackBar: MatSnackBar,
               private propertyService: PropertyService) {
                 this.id = this.actRoute.snapshot.params.id;
                 console.log(this.id);
@@ -46,22 +46,33 @@ export class ShowDetailsComponent implements OnInit {
         });
 
 
-
     this.appForm = this.formBuilder.group({
       rentalPropertyId: [],
-      firstName: [''],
-      lastName: [''],
-      contactTel: [''],
-      contactEmail: [''],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      contactTel: ['',
+        [
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(10)
+        ]
+      ],
+      contactEmail: ['',
+        [
+          Validators.required,
+          // Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')
+          Validators.email
+        ]
+      ],
       contactSms: [''],
       contactOthers: [''],
-      annualIncome: [],
+      annualIncome: [Validators.required],
       numberOfOccupant: [1],
       withChildren: [false],
       status: [1],
       appStatus: [1],
-      creditRating: [''],
-      empoyedStatus: [''],
+      creditRating: ['', Validators.required],
+      empoyedStatus: ['', Validators.required],
       notificationType: [1],
       reasonToMove: ['']
 
@@ -93,7 +104,7 @@ export class ShowDetailsComponent implements OnInit {
                           this.result = res;
                           // console.log('res', this.result);
                           this.loading = false;
-                          this.openSnackBar('Application submitted! Check your email for notification.', '');
+                          this.openSnackBar('Application submitted! Check your email or text for notification.', '');
                         });
 
 
@@ -108,15 +119,19 @@ export class ShowDetailsComponent implements OnInit {
     // this.openSnackBar('Application submitted!', '');
 
     this.appForm.reset();
+    this.appForm.get('rentalPropertyId').setValue(this.listing.rentalProperty.id);
+    this.appForm.get('appStatus').setValue(1);
+    this.appForm.get('notificationType').setValue(1);
   }
 
   clear() {
     this.appForm.reset();
+    this.loading = false;
   }
 
   openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
-      duration: 2000,
+    this.snackBar.open(message, action, {
+      duration: 3000,
     });
   }
 
