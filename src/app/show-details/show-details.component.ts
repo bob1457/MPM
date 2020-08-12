@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {Location} from '@angular/common';
 import { Observable } from 'rxjs';
 import { PropertyListing } from '../core/models/property-listing';
@@ -6,7 +6,13 @@ import { PropertyService } from '../core/services/property.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 @Component({
   selector: 'app-show-details',
   templateUrl: './show-details.component.html',
@@ -20,10 +26,13 @@ export class ShowDetailsComponent implements OnInit {
   listing: any; // PropertyListing;
   imgIndex = 0;
   loading = false;
+  openHouse: any[];
+  showRegister = false;
 
   serverUrl = 'http://localhost:63899/';
 
   appForm: FormGroup;
+  regForm: FormGroup;
 
   result = null;
 
@@ -77,12 +86,39 @@ export class ShowDetailsComponent implements OnInit {
       reasonToMove: ['']
 
     });
+
+    this.regForm = this.formBuilder.group({
+      openHouseId: [],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      contactTel: ['',
+        [
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(10)
+        ]
+      ],
+      contactEmail: ['',
+        [
+          Validators.required,
+          // Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')
+          Validators.email
+        ]
+      ],
+      contactSms: [''],
+      contactOthers: [''],
+      contactType: [],
+      numberOfOccupant: [],
+      notificationType: [1]
+    });
   }
 
   onStatusChange(value) {
     this.appForm.get('empoyedStatus').setValue(value);
     // console.log('t', value);
   }
+
+
 
   back() {
     this.location.back();
@@ -124,6 +160,10 @@ export class ShowDetailsComponent implements OnInit {
     this.appForm.get('notificationType').setValue(1);
   }
 
+  register() {
+    this.showRegister = !this.showRegister;
+  }
+
   clear() {
     this.appForm.reset();
     this.loading = false;
@@ -136,3 +176,4 @@ export class ShowDetailsComponent implements OnInit {
   }
 
 }
+
