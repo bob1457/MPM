@@ -164,6 +164,11 @@ export class ShowDetailsComponent implements OnInit {
     this.showRegister = !this.showRegister;
   }
 
+  Register() {
+    this.regForm.get('openHouseId').setValue(this.listing.rentalProperty.openHouse[0].id);
+    console.log('regform', this.regForm.value);
+  }
+
   clear() {
     this.appForm.reset();
     this.loading = false;

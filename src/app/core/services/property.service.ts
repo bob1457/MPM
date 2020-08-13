@@ -23,6 +23,8 @@ export class PropertyService {
     return this.httpClient.post(`${this.serverUrl}/api/RentalApplication/add`, data);
   }
 
-
+  addOpenHouseViewer(data) {
+    return this.httpClient.post(`${this.serverUrl}/api/Listing/openhouse/addviewer`, data);
+  }
 
 }
