@@ -107,9 +107,9 @@ export class ShowDetailsComponent implements OnInit {
       ],
       contactSms: [''],
       contactOthers: [''],
-      contactType: [],
+      // contactType: [],
       numberOfOccupant: [],
-      notificationType: [1]
+      contactType: [1]
     });
   }
 
@@ -140,7 +140,7 @@ export class ShowDetailsComponent implements OnInit {
                           this.result = res;
                           // console.log('res', this.result);
                           this.loading = false;
-                          this.openSnackBar('Application submitted! Check your email or text for notification.', '');
+                          this.openSnackBar('Application submitted! Check your email or text for confirmation.', '');
                         });
 
 
@@ -165,8 +165,21 @@ export class ShowDetailsComponent implements OnInit {
   }
 
   Register() {
+    debugger;
+    this.loading = true;
     this.regForm.get('openHouseId').setValue(this.listing.rentalProperty.openHouse[0].id);
     console.log('regform', this.regForm.value);
+    this.propertyService.addOpenHouseViewer(this.regForm.value)
+                        .subscribe( res => {
+                          this.result = res;
+                          // console.log('res', this.result);
+                          this.loading = false;
+                          this.openSnackBar('You have registered for the open house Check your email or text for confirmation.', '');
+                        });
+ 
+    this.regForm.reset();
+    this.regForm.get('contactType').setValue(1);
+
   }
 
   clear() {
