@@ -108,7 +108,7 @@ export class ShowDetailsComponent implements OnInit {
       contactSms: [''],
       contactOthers: [''],
       // contactType: [],
-      numberOfOccupant: [],
+      numberOfPeople: [1],
       contactType: [1]
     });
   }
@@ -176,7 +176,7 @@ export class ShowDetailsComponent implements OnInit {
                           this.loading = false;
                           this.openSnackBar('You have registered for the open house Check your email or text for confirmation.', '');
                         });
- 
+
     this.regForm.reset();
     this.regForm.get('contactType').setValue(1);
 

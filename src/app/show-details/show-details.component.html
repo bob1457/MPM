@@ -46,7 +46,7 @@
 
         <div style="margin-bottom: 25px;margin-top: 30px;">
             <h6>Open House</h6>
-            <div *ngIf="listing.rentalProperty.openHouse.length > 0">
+            <div *ngIf="listing.rentalProperty.openHouse">
                 <ul style="list-style: none; margin-left: -25px;">
                     <li *ngFor="let oh of listing.rentalProperty.openHouse" style="font-size: .8em;">
                         {{oh.openhouseDate | date: 'EEEE, MMMM d, y'}}<br> {{oh.startTime}} to {{oh.endTime}}
@@ -78,7 +78,7 @@
                                     </mat-form-field> -->
                                     <mat-form-field class="form-content">
                                         <mat-icon matSuffix>supervisor_account</mat-icon>
-                                        <input matInput type="number" matInput placeholder="Number of people" formControlName="numberOfOccupant">
+                                        <input matInput type="number" matInput placeholder="Number of people" formControlName="numberOfPeople">
                                     </mat-form-field>
 
 
@@ -90,7 +90,7 @@
                                 <div class="row">
                                     <mat-form-field class="form-content">
                                         <mat-icon matSuffix>phone</mat-icon>
-                                        <input formControlName="contactTel" matInput placeholder="Telephone?Texting">
+                                        <input formControlName="contactTel" matInput placeholder="Telephone/Texting">
                                     </mat-form-field>
                                     <mat-form-field class="form-content">
                                         <mat-icon matSuffix>email</mat-icon>
@@ -141,7 +141,7 @@
                 </div>
             </div>
 
-            <p *ngIf="listing.rentalProperty.openHouse.length === 0" style="font-size: .8em;">
+            <p *ngIf="!listing.rentalProperty.openHouse" style="font-size: .8em;">
                 No open house, view by appointment
 
         </div>
