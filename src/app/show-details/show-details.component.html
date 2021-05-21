@@ -231,10 +231,10 @@
                             <mat-label>Employment Status</mat-label>
                             <mat-select formControlName="empoyedStatus" #mySelect (selectionChange)="onStatusChange(mySelect.value)">
                                 <mat-option [value]=0></mat-option>
-                                <mat-option [value]=1>Employed</mat-option>
-                                <mat-option [value]=2>Self-Employed</mat-option>
-                                <mat-option [value]=3>Student</mat-option>
-                                <mat-option [value]=4>Other</mat-option>
+                                <mat-option [value]="Employed">Employed</mat-option>
+                                <mat-option [value]="Self-Employed">Self-Employed</mat-option>
+                                <mat-option [value]="Student">Student</mat-option>
+                                <mat-option [value]="Other">Other</mat-option>
                             </mat-select>
                         </mat-form-field>
 
