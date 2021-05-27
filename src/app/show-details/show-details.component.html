@@ -229,12 +229,12 @@
 
                         <mat-form-field class="form-content">
                             <mat-label>Employment Status</mat-label>
-                            <mat-select formControlName="empoyedStatus" #mySelect (selectionChange)="onStatusChange(mySelect.value)">
-                                <mat-option [value]=0></mat-option>
-                                <mat-option [value]="Employed">Employed</mat-option>
-                                <mat-option [value]="Self-Employed">Self-Employed</mat-option>
-                                <mat-option [value]="Student">Student</mat-option>
-                                <mat-option [value]="Other">Other</mat-option>
+                            <mat-select formControlName="empoyedStatus" #mySelect1 (selectionChange)="onEmpChange(mySelect1.value)">
+                                <!-- <mat-option [value]=0></mat-option> -->
+                                <mat-option value="Employed">Employed</mat-option>
+                                <mat-option value="Self-Employed">Self-Employed</mat-option>
+                                <mat-option value="Student">Student</mat-option>
+                                <mat-option value="Other">Other</mat-option>
                             </mat-select>
                         </mat-form-field>
 
