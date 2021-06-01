@@ -48,7 +48,7 @@
             <div class="col-md-5 col-sm-12">
                 <div style="margin-bottom: 25px;">
                     <h6>Open House</h6>
-                    <div *ngIf="listing.rentalProperty.openHouse">
+                    <div *ngIf="listing.rentalProperty.openHouse.length > 0">
                         <ul style="list-style: none; margin-left: -25px;">
                             <li *ngFor="let oh of listing.rentalProperty.openHouse" style="font-size: .8em;">
                                 {{oh.openhouseDate | date: 'EEEE, MMMM d, y'}}<br> {{oh.startTime}} to {{oh.endTime}}
@@ -143,7 +143,7 @@
                         </div>
                     </div>
 
-                    <p *ngIf="!listing.rentalProperty.openHouse" style="font-size: .8em;">
+                    <p *ngIf="listing.rentalProperty.openHouse.length == 0" style="font-size: .8em;">
                         No open house, view by appointment
 
                 </div>
