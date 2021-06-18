@@ -114,8 +114,12 @@ export class ShowDetailsComponent implements OnInit {
   }
 
   onStatusChange(value) {
-    this.appForm.get('empoyedStatus').setValue(value);
+    this.appForm.get('status').setValue(value);
     // console.log('t', value);
+  }
+
+  onEmpChange(value) {
+    this.appForm.get('empoyedStatus').setValue(value);
   }
 
 
