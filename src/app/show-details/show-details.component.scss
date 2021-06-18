@@ -8,6 +8,14 @@
     flex-direction: column;
 }
 
+.field-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .form-container>* {
     width: 90%;
 }
@@ -16,6 +24,7 @@
     // width: 90%;
     margin-left: auto;
     margin-right: auto;
+    width: 95%;
 }
 
 .form-header {

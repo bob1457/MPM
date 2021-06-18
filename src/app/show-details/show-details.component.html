@@ -177,16 +177,43 @@
                             <mat-icon matSuffix>person</mat-icon>
                             <input hidden formControlName="rentalPropertyId" matInput placeholder="id">
                         </mat-form-field> -->
-                        <mat-form-field class="form-content" style="margin-top: 20px;">
-                            <mat-icon matSuffix>person</mat-icon>
-                            <input formControlName="firstName" matInput placeholder="First Name">
-                        </mat-form-field>
-                        <mat-form-field class="form-content">
-                            <mat-icon matSuffix>person</mat-icon>
-                            <input formControlName="lastName" matInput placeholder="Last Name">
-                        </mat-form-field>
+                        <div class="field-container">
 
-                        <mat-form-field class="form-content">
+                            <div style="width: 50%;">
+                                <mat-form-field class="form-content">
+                                    <mat-icon matSuffix>person</mat-icon>
+                                    <input formControlName="firstName" matInput placeholder="First Name">
+                                </mat-form-field>
+                            </div>
+                            <div style="width: 50%;">
+                                <mat-form-field class="form-content">
+                                    <mat-icon matSuffix>person</mat-icon>
+                                    <input formControlName="lastName" matInput placeholder="Last Name">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="field-container">
+
+                            <div style="width: 50%;">
+                                <mat-form-field class="form-content">
+                                    <mat-icon matSuffix>phone</mat-icon>
+                                    <input formControlName="contactTel" matInput placeholder="Tel/Text">
+                                </mat-form-field>
+                            </div>
+                            <div style="width: 50%;">
+                                <mat-form-field class="form-content">
+                                    <mat-icon matSuffix>email</mat-icon>
+                                    <input formControlName="contactEmail" matInput placeholder="Contact Email">
+                                    <!-- <div *ngIf="contactEmail.errors?.email">
+                                  Primary Email not valid.
+                              </div> -->
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+
+
+                        <!-- <mat-form-field class="form-content">
                             <mat-icon matSuffix>phone</mat-icon>
                             <input formControlName="contactTel" matInput placeholder="Tel: all numbers, no space or dash">
                         </mat-form-field>
@@ -199,10 +226,8 @@
                         <mat-form-field class="form-content">
                             <mat-icon matSuffix>email</mat-icon>
                             <input formControlName="contactEmail" matInput placeholder="Contact Email">
-                            <!-- <div *ngIf="contactEmail.errors?.email">
-                                Primary Email not valid.
-                            </div> -->
-                        </mat-form-field>
+
+                        </mat-form-field> -->
 
                         <mat-form-field class="form-content">
                             <mat-label>Imigration Status</mat-label>
