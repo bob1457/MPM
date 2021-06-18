@@ -1,6 +1,6 @@
 <!-- <p>show-details works!</p> -->
 <div class="row" *ngIf="listing$ | async">
-    <div class="col-lg-8 col-mb-5">
+    <div class="col-lg-7 col-mb-5">
         <div class="row">
             <div class="col-md-12">
                 <span class="material-icons" style="border: 2px #177fca solid;
@@ -162,7 +162,7 @@
 
 
     </div>
-    <div class="col-lg-4 col-mb-5">
+    <div class="col-lg-5 col-mb-6">
         <!-- <p>Application Form</p> -->
         <mat-card class="application-card">
             <mat-card-content>
@@ -170,7 +170,7 @@
                 <p class="sub-title">
                     By submitting this form, you agree that you are willing to provide any additional information, including any supporting documents and references, for being considered for tenancy.
                 </p>
-                <p class="form-header">Application Form</p>
+                <p class="form-header">Tenancy Application Form</p>
                 <form style="margin-top: -20px;max-height: 650px;overflow: auto;" [formGroup]="appForm" (ngSubmit)="submit()">
                     <div class="form-container" style="border: 1px solid grey;">
                         <!-- <mat-form-field class="form-content" style="margin-top: 20px;">
