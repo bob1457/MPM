@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { PropertyListing } from '../core/models/property-listing';
 import { PropertyService } from '../core/services/property.service';
 import { ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -28,6 +28,8 @@ export class ShowDetailsComponent implements OnInit {
   loading = false;
   openHouse: any[];
   showRegister = false;
+  withChildren = false;
+  applicantNumber = 1;
 
   serverUrl = 'http://localhost:63899/';
 
@@ -45,7 +47,7 @@ export class ShowDetailsComponent implements OnInit {
                 console.log(this.id);
               }
 
-  ngOnInit(): void {
+  ngOnInit(): void{
     this.listing$ =  this.propertyService.GetListingDetails(this.id);
 
     this.propertyService.GetListingDetails(this.id)
@@ -56,6 +58,11 @@ export class ShowDetailsComponent implements OnInit {
 
 
     this.appForm = this.formBuilder.group({
+
+      applicants: this.formBuilder.array([]),
+      previousAddrsses: this.formBuilder.array([]),
+      children: this.formBuilder.array([]),
+
       rentalPropertyId: [],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -81,6 +88,7 @@ export class ShowDetailsComponent implements OnInit {
       status: [1],
       appStatus: [1],
       creditRating: ['', Validators.required],
+      creditSource: [''],
       empoyedStatus: ['', Validators.required],
       notificationType: [1],
       reasonToMove: ['']
@@ -113,6 +121,29 @@ export class ShowDetailsComponent implements OnInit {
     });
   }
 
+  applicants(): FormArray {
+    return this.appForm.get('applicants') as FormArray;
+  }
+
+  newApplicant(): FormGroup {
+    return this.formBuilder.group({
+      coFirstName: '',
+      coLastName: '',
+      coEmail: '',
+      colTelephone: ''
+    });
+  }
+
+  addApplicant() {
+    this.applicants().push(this.newApplicant());
+  }
+
+  removeApplicant(applicantIndex: number) {
+    this.applicants().removeAt(applicantIndex);
+  }
+
+
+
   onStatusChange(value) {
     this.appForm.get('status').setValue(value);
     // console.log('t', value);
@@ -123,6 +154,9 @@ export class ShowDetailsComponent implements OnInit {
   }
 
 
+  onCreditSourceChange(value) {
+    this.appForm.get('creditSource').setValue(value);
+  }
 
   back() {
     this.location.back();
@@ -139,13 +173,13 @@ export class ShowDetailsComponent implements OnInit {
     this.appForm.get('rentalPropertyId').setValue(this.listing.rentalProperty.id);
     console.log('form', this.appForm.value);
 
-    this.propertyService.SentRentalApplication(this.appForm.value)
-                        .subscribe(res => {
-                          this.result = res;
-                          // console.log('res', this.result);
-                          this.loading = false;
-                          this.openSnackBar('Application submitted! Check your email or text for confirmation.', '');
-                        });
+    // this.propertyService.SentRentalApplication(this.appForm.value) // For testing
+    //                     .subscribe(res => {
+    //                       this.result = res;
+    //                       // console.log('res', this.result);
+    //                       this.loading = false;
+    //                       this.openSnackBar('Application submitted! Check your email or text for confirmation.', '');
+    //                     });
 
 
 // ******Testing code ******************************
@@ -197,5 +231,16 @@ export class ShowDetailsComponent implements OnInit {
     });
   }
 
+  onChildrenChange(event) {
+    console.log('children', event.checked);
+    this.withChildren = event.checked;
+  }
+
+  onOccupantChange(value) {
+    console.log('peopele', value);
+    this.applicantNumber = value;
+  }
 }
+
+
 
