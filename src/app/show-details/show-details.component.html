@@ -259,7 +259,7 @@
                                         <div style="width: 45%;">
                                             <mat-form-field class="form-content">
                                                 <mat-icon matSuffix>save_alt</mat-icon>
-                                                <input formControlName="coIncome" matInput placeholder="Annual">
+                                                <input formControlName="coIncome" matInput placeholder="Income">
                                             </mat-form-field>
                                         </div>
                                         <div style="width: 50%;">
@@ -416,8 +416,11 @@
                                       </div> -->
                                         <div style="width: 45%;">
                                             <mat-form-field class="form-content">
-                                                <mat-icon matSuffix>wc</mat-icon>
-                                                <input formControlName="chGender" matInput placeholder="Gender">
+                                                <mat-label>Gender</mat-label>
+                                                <mat-select formControlName="chGender" #gSelect (selectionChange)="onGenderChange(gSelect.value)">
+                                                    <mat-option value="Male">Male</mat-option>
+                                                    <mat-option value="Female">Female</mat-option>
+                                                </mat-select>
                                             </mat-form-field>
                                         </div>
                                         <div style="width: 50%;">
@@ -484,10 +487,23 @@
                                             </mat-form-field>
                                         </div>
                                     </div>
-                                    <div class="field-container" style="margin-left: 4px;margin-top: 15px;">
-                                        <!-- <div style="width: 10%;">
-                                        {{applicantIndex + 2}}
+                                    <div class="field-container" style="margin-left: 4px;margin-top: 5px;">
+                                        <mat-form-field class="form-content" *ngIf="employerType">
+                                            <mat-icon matSuffix>account_balance</mat-icon>
+                                            <input formControlName="refEmpName" matInput placeholder="Employer Name (Company)">
+                                        </mat-form-field>
+                                    </div>
+                                    <!-- <div class="field-container" style="margin-left: 4px;margin-top: 15px;">
+                                      <div style="width: 90%;">
+                                        <mat-form-field class="form-content">
+                                            <mat-icon matSuffix>mail</mat-icon>
+                                            <input formControlName="refEmail" matInput placeholder="Email">
+                                        </mat-form-field>
                                     </div> -->
+                                    <div class="field-container" style="margin-left: 4px;margin-top: 5px;">
+                                        <!-- <div style="width: 10%;">
+                                          {{applicantIndex + 2}}
+                                      </div> -->
                                         <div style="width: 45%;">
                                             <mat-form-field class="form-content">
                                                 <mat-icon matSuffix>mail</mat-icon>
@@ -501,7 +517,16 @@
                                             </mat-form-field>
                                         </div>
                                     </div>
+                                    <div class="field-container" style="margin-left: 4px;margin-top: 5px;">
+                                        <div style="width: 100%;">
+                                            <mat-form-field class="form-content">
+                                                <mat-icon matSuffix>assignment</mat-icon>
+                                                <input formControlName="refNotes" matInput placeholder="Note">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
 

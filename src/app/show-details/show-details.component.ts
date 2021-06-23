@@ -38,6 +38,8 @@ export class ShowDetailsComponent implements OnInit {
 
   result = null;
 
+  employerType = false;
+
   constructor(private location: Location,
               private actRoute: ActivatedRoute,
               private formBuilder: FormBuilder,
@@ -92,8 +94,13 @@ export class ShowDetailsComponent implements OnInit {
       creditSource: [''],
       empoyedStatus: ['', Validators.required],
       notificationType: [1],
-      reasonToMove: ['']
+      reasonToMove: [''],
 
+// Workaround for getting rid of error when getting fields from form array, need to figure out later
+      gender: [''],
+      refType: [''],
+      refEmpName: [''],
+      refNotes: ['']
     });
 
     this.regForm = this.formBuilder.group({
@@ -152,7 +159,9 @@ export class ShowDetailsComponent implements OnInit {
       refName: [''],
       refEmail: [''],
       refTel: [''],
-      refType: ['']
+      refType: [''],
+      refEmpName: [''],
+      refNotes: ['']
     });
   }
 
@@ -201,6 +210,20 @@ export class ShowDetailsComponent implements OnInit {
 
   onContactChange(value) {
     this.appForm.get('refType').setValue(value);
+    // if (value == ='Employer') {
+    //   this.employerType = true;
+    //   } else {
+    //     this.employerType = false;
+    //   }
+    if (value === 'Employer') {
+      this.employerType = true;
+    } else {
+      this.employerType = false;
+    }
+  }
+
+  onGenderChange(value) {
+    this.appForm.get('gender').setValue(value);
   }
 
   onCreditSourceChange(value) {
