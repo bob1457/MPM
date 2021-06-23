@@ -62,6 +62,7 @@ export class ShowDetailsComponent implements OnInit {
       applicants: this.formBuilder.array([]),
       previousAddrsses: this.formBuilder.array([]),
       children: this.formBuilder.array([]),
+      references: this.formBuilder.array([]),
 
       rentalPropertyId: [],
       firstName: ['', Validators.required],
@@ -82,7 +83,7 @@ export class ShowDetailsComponent implements OnInit {
       ],
       contactSms: [''],
       contactOthers: [''],
-      annualIncome: [Validators.required],
+      annualIncome: ['', Validators.required],
       numberOfOccupant: [1],
       withChildren: [false],
       status: [1],
@@ -125,12 +126,42 @@ export class ShowDetailsComponent implements OnInit {
     return this.appForm.get('applicants') as FormArray;
   }
 
+  children(): FormArray{
+    return this.appForm.get('children') as FormArray;
+  }
+
+  references(): FormArray{
+    return this.appForm.get('references') as FormArray;
+  }
+
   newApplicant(): FormGroup {
     return this.formBuilder.group({
-      coFirstName: '',
-      coLastName: '',
-      coEmail: '',
-      colTelephone: ''
+      coFirstName: [''],
+      coLastName: [''],
+      coEmail: [''],
+      coTelephone: [''],
+      coLegalStatus: [''],
+      coEmpStatus: [''],
+      coIncome: [''],
+      coCredit: ['']
+    });
+  }
+
+  newReference(): FormGroup {
+    return this.formBuilder.group({
+      refName: [''],
+      refEmail: [''],
+      refTel: [''],
+      refType: ['']
+    });
+  }
+
+  newChild(): FormGroup {
+    return this.formBuilder.group({
+      chFirstName: '',
+      chLastName: '',
+      chGender: '',
+      chAge: ''
     });
   }
 
@@ -138,10 +169,25 @@ export class ShowDetailsComponent implements OnInit {
     this.applicants().push(this.newApplicant());
   }
 
+  addChild() {
+    this.children().push(this.newChild());
+  }
+
+  addReference() {
+    this.references().push(this.newReference());
+  }
+
   removeApplicant(applicantIndex: number) {
     this.applicants().removeAt(applicantIndex);
   }
 
+  removeChild(childIndex: number) {
+    this.children().removeAt(childIndex);
+  }
+
+  removeRefernence(refIndex: number) {
+    this.references().removeAt(refIndex);
+  }
 
 
   onStatusChange(value) {
@@ -153,6 +199,9 @@ export class ShowDetailsComponent implements OnInit {
     this.appForm.get('empoyedStatus').setValue(value);
   }
 
+  onContactChange(value) {
+    this.appForm.get('refType').setValue(value);
+  }
 
   onCreditSourceChange(value) {
     this.appForm.get('creditSource').setValue(value);
@@ -196,6 +245,8 @@ export class ShowDetailsComponent implements OnInit {
     this.appForm.get('rentalPropertyId').setValue(this.listing.rentalProperty.id);
     this.appForm.get('appStatus').setValue(1);
     this.appForm.get('notificationType').setValue(1);
+    // this.appForm.get('numberOfPeople').setValue(1);
+    this.removeAll();
   }
 
   register() {
@@ -236,9 +287,35 @@ export class ShowDetailsComponent implements OnInit {
     this.withChildren = event.checked;
   }
 
+
+
   onOccupantChange(value) {
     console.log('peopele', value);
     this.applicantNumber = value;
+  }
+
+  removeAll() {
+    const item = document.querySelector('#applicants');
+    console.log('item', item);
+    // item.innerHTML = '';
+    while (item.firstChild) {
+      item.removeChild(item.firstChild);
+    }
+
+    const item2 = document.querySelector('#children');
+    console.log('item', item2);
+    // item.innerHTML = '';
+    while (item2.firstChild) {
+      item2.removeChild(item2.firstChild);
+    }
+
+    const item3 = document.querySelector('#references');
+    console.log('item', item3);
+    // item.innerHTML = '';
+    while (item3.firstChild) {
+      item3.removeChild(item3.firstChild);
+    }
+
   }
 }
 

@@ -210,11 +210,11 @@
                                 </mat-form-field>
                             </div>
                             <div style="width: 70%;margin-left: 30px;" *ngIf="applicantNumber > 1">
-                                <button type="button" mat-stroked-button (click)="addApplicant()">Add Applicant</button>
+                                <button type="button" mat-stroked-button (click)="addApplicant()">Add Co-Applicant</button>
                             </div>
                         </div>
                         <!-- Form Array for co-applicatn -->
-                        <div formArrayName="applicants">
+                        <div formArrayName="applicants" id="applicants">
                             <div *ngFor="let applicant of applicants().controls; let applicantIndex=index" style="margin-bottom: 5px;">
                                 <div [formGroupName]="applicantIndex" style="margin-left: 25px; border: 1px solid blue; padding-left: 7px;padding-right: 7px;">
                                     <mat-icon style="color: orangered; cursor: pointer;" (click)="removeApplicant(applicantIndex)">clear</mat-icon>
@@ -248,7 +248,51 @@
                                         <div style="width: 50%;">
                                             <mat-form-field class="form-content">
                                                 <mat-icon matSuffix>phone</mat-icon>
-                                                <input formControlName="colTelephone" matInput placeholder="Telephone">
+                                                <input formControlName="coTelephone" matInput placeholder="Telephone">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="field-container" style="margin-left: 4px;margin-top: 15px;">
+                                        <!-- <div style="width: 10%;">
+                                        {{applicantIndex + 2}}
+                                    </div> -->
+                                        <div style="width: 45%;">
+                                            <mat-form-field class="form-content">
+                                                <mat-icon matSuffix>save_alt</mat-icon>
+                                                <input formControlName="coIncome" matInput placeholder="Annual">
+                                            </mat-form-field>
+                                        </div>
+                                        <div style="width: 50%;">
+                                            <mat-form-field class="form-content">
+                                                <mat-icon matSuffix>insights</mat-icon>
+                                                <input formControlName="coCredit" matInput placeholder="Credit Rating">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="field-container" style="margin-left: 4px;margin-top: 15px;">
+                                        <!-- <div style="width: 10%;">
+                                      {{applicantIndex + 2}}
+                                  </div> -->
+                                        <div style="width: 45%;">
+                                            <mat-form-field class="form-content">
+                                                <mat-label>Imigration Status</mat-label>
+                                                <mat-select formControlName="coLegalStatus" #coSelect (selectionChange)="onStatusChange(coSelect.value)">
+                                                    <!-- <mat-option [value]=0></mat-option> -->
+                                                    <mat-option [value]=1>Canadian Citizen</mat-option>
+                                                    <mat-option [value]=2>Permenant Resident</mat-option>
+                                                    <mat-option [value]=3>Visitor Visa</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                        <div style="width: 50%;">
+                                            <mat-form-field class="form-content">
+                                                <mat-label>Employment Status</mat-label>
+                                                <mat-select formControlName="coEmpStatus" #coSelect1 (selectionChange)="onEmpChange(coSelect1.value)">
+                                                    <mat-option value="Employed">Employed</mat-option>
+                                                    <mat-option value="Self-Employed">Self-Employed</mat-option>
+                                                    <mat-option value="Student">Student</mat-option>
+                                                    <mat-option value="Other">Other</mat-option>
+                                                </mat-select>
                                             </mat-form-field>
                                         </div>
                                     </div>
@@ -341,9 +385,50 @@
                                 <mat-checkbox formControlName="withChildren" (change)="onChildrenChange($event)">With Children</mat-checkbox>
                             </div>
                             <div style="width: 70%;margin-left: 30px;" *ngIf="withChildren">
-                                <button mat-stroked-button style="margin-top: -10px;">Add Children</button>
+                                <button type="button" mat-stroked-button style="margin-top: -10px;" (click)="addChild(childIndex)">Add Children</button>
                             </div>
 
+                        </div>
+                        <div formArrayName="children" id="children">
+                            <div *ngFor="let child of children().controls; let childIndex=index" style="margin-bottom: 5px;">
+                                <div [formGroupName]="childIndex" style="margin-left: 25px; border: 1px solid blue; padding-left: 7px;padding-right: 7px;">
+                                    <mat-icon style="color: orangered; cursor: pointer;" (click)="removeChild(childIndex)">clear</mat-icon>
+                                    <div class="field-container" style="margin-left: 4px;margin-top: 15px;">
+                                        <!-- <div style="width: 10%;">
+                                            {{applicantIndex + 2}}
+                                        </div> -->
+                                        <div style="width: 45%;">
+                                            <mat-form-field class="form-content">
+                                                <mat-icon matSuffix>person</mat-icon>
+                                                <input formControlName="chFirstName" matInput placeholder="First Name">
+                                            </mat-form-field>
+                                        </div>
+                                        <div style="width: 50%;">
+                                            <mat-form-field class="form-content">
+                                                <mat-icon matSuffix>person</mat-icon>
+                                                <input formControlName="chLastName" matInput placeholder="Last Name">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="field-container" style="margin-left: 4px;margin-top: 15px;">
+                                        <!-- <div style="width: 10%;">
+                                          {{applicantIndex + 2}}
+                                      </div> -->
+                                        <div style="width: 45%;">
+                                            <mat-form-field class="form-content">
+                                                <mat-icon matSuffix>wc</mat-icon>
+                                                <input formControlName="chGender" matInput placeholder="Gender">
+                                            </mat-form-field>
+                                        </div>
+                                        <div style="width: 50%;">
+                                            <mat-form-field class="form-content">
+                                                <mat-icon matSuffix>accessibility</mat-icon>
+                                                <input formControlName="chAge" matInput placeholder="Age">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
 
@@ -368,6 +453,61 @@
                         <mat-form-field class="form-content">
                             <textarea formControlName="reasonToMove" matInput placeholder="Reason to move"></textarea>
                         </mat-form-field>
+                        <!-- <p>Refenences</p> -->
+                        <div style="width: 70%;margin-left: 15px;margin-bottom: 5px;">
+                            <button type="button" mat-stroked-button style="margin-top: 10px;" (click)="addReference(refIndex)">Add Reference</button>
+                        </div>
+
+                        <div formArrayName="references" id="references">
+                            <div *ngFor="let ref of references().controls; let refIndex=index" style="margin-bottom: 5px;">
+                                <div [formGroupName]="refIndex" style="margin-left: 25px; border: 1px solid blue; padding-left: 7px;padding-right: 7px;">
+                                    <mat-icon style="color: orangered; cursor: pointer;" (click)="removeRefernence(refIndex)">clear</mat-icon>
+                                    <div class="field-container" style="margin-left: 4px;margin-top: 15px;">
+                                        <!-- <div style="width: 10%;">
+                                          {{applicantIndex + 2}}
+                                      </div> -->
+                                        <div style="width: 45%;">
+                                            <mat-form-field class="form-content">
+                                                <mat-label>Contact Type</mat-label>
+                                                <mat-select formControlName="refType" #conSelect (selectionChange)="onContactChange(conSelect.value)">
+                                                    <mat-option value="CurLandlord">Current Landlord</mat-option>
+                                                    <mat-option value="PreLandloard">Prev. Landloard</mat-option>
+                                                    <mat-option value="Employer">Employer</mat-option>
+                                                    <mat-option value="Other">Other</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                        <div style="width: 50%;">
+                                            <mat-form-field class="form-content">
+                                                <mat-icon matSuffix>person</mat-icon>
+                                                <input formControlName="refName" matInput placeholder="Contact Name">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="field-container" style="margin-left: 4px;margin-top: 15px;">
+                                        <!-- <div style="width: 10%;">
+                                        {{applicantIndex + 2}}
+                                    </div> -->
+                                        <div style="width: 45%;">
+                                            <mat-form-field class="form-content">
+                                                <mat-icon matSuffix>mail</mat-icon>
+                                                <input formControlName="refEmail" matInput placeholder="Email">
+                                            </mat-form-field>
+                                        </div>
+                                        <div style="width: 50%;">
+                                            <mat-form-field class="form-content">
+                                                <mat-icon matSuffix>phone</mat-icon>
+                                                <input formControlName="refTel" matInput placeholder="Tel">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
                         <mat-radio-group aria-label="Select an option" style="margin-left: 15px;" formControlName="notificationType">
                             <mat-label>Notification Preference</mat-label><br>
                             <mat-radio-button [value]=1 checked style="padding-right: 10px;margin-top: 10px;margin-bottom: 5px;">Email</mat-radio-button>
