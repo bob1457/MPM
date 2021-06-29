@@ -38,7 +38,7 @@ export class ShowDetailsComponent implements OnInit {
 
   result = null;
 
-  employerType = false;
+  employerType;
 
   constructor(private location: Location,
               private actRoute: ActivatedRoute,
@@ -98,9 +98,7 @@ export class ShowDetailsComponent implements OnInit {
 
 // Workaround for getting rid of error when getting fields from form array, need to figure out later
       gender: [''],
-      refType: [''],
-      refEmpName: [''],
-      refNotes: ['']
+      type: [null]
     });
 
     this.regForm = this.formBuilder.group({
@@ -143,34 +141,37 @@ export class ShowDetailsComponent implements OnInit {
 
   newApplicant(): FormGroup {
     return this.formBuilder.group({
-      coFirstName: [''],
-      coLastName: [''],
-      coEmail: [''],
-      coTelephone: [''],
-      coLegalStatus: [''],
-      coEmpStatus: [''],
-      coIncome: [''],
-      coCredit: ['']
+      firstName: [''],
+      lastName: [''],
+      contactTel: [''],
+      contactSms: [''],
+      contactEmail: [''],
+      contactOthers: [''],
+      status: [''],
+      creditRating: [''],
+      empoyedStatus: [''],
+      reasonToMove: [''],
+      annualIncome: ['']
     });
   }
 
   newReference(): FormGroup {
     return this.formBuilder.group({
-      refName: [''],
-      refEmail: [''],
-      refTel: [''],
-      refType: [''],
-      refEmpName: [''],
-      refNotes: ['']
+      contactName: [''],
+      contactTel: [''],
+      contactEmail: [''],
+      type: Number([null]),
+      contactEntityName: [''],
+      notes: ['']
     });
   }
 
   newChild(): FormGroup {
     return this.formBuilder.group({
-      chFirstName: '',
-      chLastName: '',
-      chGender: '',
-      chAge: ''
+      firstName: [''],
+      lastName: [''],
+      gender: [''],
+      age: ['']
     });
   }
 
@@ -209,17 +210,19 @@ export class ShowDetailsComponent implements OnInit {
   }
 
   onContactChange(value) {
-    this.appForm.get('refType').setValue(value);
+    this.appForm.get('type').setValue(+value);
     // if (value == ='Employer') {
     //   this.employerType = true;
     //   } else {
     //     this.employerType = false;
     //   }
-    if (value === 'Employer') {
+    console.log('type', value);
+    if (value === 3) {
       this.employerType = true;
     } else {
       this.employerType = false;
     }
+    console.log('emp ', this.employerType);
   }
 
   onGenderChange(value) {

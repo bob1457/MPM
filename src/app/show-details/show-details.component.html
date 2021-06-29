@@ -225,13 +225,13 @@
                                         <div style="width: 45%;">
                                             <mat-form-field class="form-content">
                                                 <mat-icon matSuffix>person</mat-icon>
-                                                <input formControlName="coFirstName" matInput placeholder="First Name">
+                                                <input formControlName="firstName" matInput placeholder="First Name">
                                             </mat-form-field>
                                         </div>
                                         <div style="width: 50%;">
                                             <mat-form-field class="form-content">
                                                 <mat-icon matSuffix>person</mat-icon>
-                                                <input formControlName="coLastName" matInput placeholder="Last Name">
+                                                <input formControlName="lastName" matInput placeholder="Last Name">
                                             </mat-form-field>
                                         </div>
                                     </div>
@@ -242,13 +242,13 @@
                                         <div style="width: 45%;">
                                             <mat-form-field class="form-content">
                                                 <mat-icon matSuffix>mail</mat-icon>
-                                                <input formControlName="coEmail" matInput placeholder="Email">
+                                                <input formControlName="contactEmail" matInput placeholder="Email">
                                             </mat-form-field>
                                         </div>
                                         <div style="width: 50%;">
                                             <mat-form-field class="form-content">
                                                 <mat-icon matSuffix>phone</mat-icon>
-                                                <input formControlName="coTelephone" matInput placeholder="Telephone">
+                                                <input formControlName="contactTel" matInput placeholder="Telephone">
                                             </mat-form-field>
                                         </div>
                                     </div>
@@ -259,13 +259,13 @@
                                         <div style="width: 45%;">
                                             <mat-form-field class="form-content">
                                                 <mat-icon matSuffix>save_alt</mat-icon>
-                                                <input formControlName="coIncome" matInput placeholder="Income">
+                                                <input formControlName="annualIncome" matInput placeholder="Income">
                                             </mat-form-field>
                                         </div>
                                         <div style="width: 50%;">
                                             <mat-form-field class="form-content">
                                                 <mat-icon matSuffix>insights</mat-icon>
-                                                <input formControlName="coCredit" matInput placeholder="Credit Rating">
+                                                <input formControlName="creditRating" matInput placeholder="Credit Rating">
                                             </mat-form-field>
                                         </div>
                                     </div>
@@ -276,7 +276,7 @@
                                         <div style="width: 45%;">
                                             <mat-form-field class="form-content">
                                                 <mat-label>Imigration Status</mat-label>
-                                                <mat-select formControlName="coLegalStatus" #coSelect (selectionChange)="onStatusChange(coSelect.value)">
+                                                <mat-select formControlName="status" #coSelect (selectionChange)="onStatusChange(coSelect.value)">
                                                     <!-- <mat-option [value]=0></mat-option> -->
                                                     <mat-option [value]=1>Canadian Citizen</mat-option>
                                                     <mat-option [value]=2>Permenant Resident</mat-option>
@@ -287,7 +287,7 @@
                                         <div style="width: 50%;">
                                             <mat-form-field class="form-content">
                                                 <mat-label>Employment Status</mat-label>
-                                                <mat-select formControlName="coEmpStatus" #coSelect1 (selectionChange)="onEmpChange(coSelect1.value)">
+                                                <mat-select formControlName="empoyedStatus" #coSelect1 (selectionChange)="onEmpChange(coSelect1.value)">
                                                     <mat-option value="Employed">Employed</mat-option>
                                                     <mat-option value="Self-Employed">Self-Employed</mat-option>
                                                     <mat-option value="Student">Student</mat-option>
@@ -400,13 +400,13 @@
                                         <div style="width: 45%;">
                                             <mat-form-field class="form-content">
                                                 <mat-icon matSuffix>person</mat-icon>
-                                                <input formControlName="chFirstName" matInput placeholder="First Name">
+                                                <input formControlName="firstName" matInput placeholder="First Name">
                                             </mat-form-field>
                                         </div>
                                         <div style="width: 50%;">
                                             <mat-form-field class="form-content">
                                                 <mat-icon matSuffix>person</mat-icon>
-                                                <input formControlName="chLastName" matInput placeholder="Last Name">
+                                                <input formControlName="lastName" matInput placeholder="Last Name">
                                             </mat-form-field>
                                         </div>
                                     </div>
@@ -417,7 +417,7 @@
                                         <div style="width: 45%;">
                                             <mat-form-field class="form-content">
                                                 <mat-label>Gender</mat-label>
-                                                <mat-select formControlName="chGender" #gSelect (selectionChange)="onGenderChange(gSelect.value)">
+                                                <mat-select formControlName="gender" #gSelect (selectionChange)="onGenderChange(gSelect.value)">
                                                     <mat-option value="Male">Male</mat-option>
                                                     <mat-option value="Female">Female</mat-option>
                                                 </mat-select>
@@ -426,7 +426,7 @@
                                         <div style="width: 50%;">
                                             <mat-form-field class="form-content">
                                                 <mat-icon matSuffix>accessibility</mat-icon>
-                                                <input formControlName="chAge" matInput placeholder="Age">
+                                                <input formControlName="age" matInput placeholder="Age">
                                             </mat-form-field>
                                         </div>
                                     </div>
@@ -472,25 +472,26 @@
                                         <div style="width: 45%;">
                                             <mat-form-field class="form-content">
                                                 <mat-label>Contact Type</mat-label>
-                                                <mat-select formControlName="refType" #conSelect (selectionChange)="onContactChange(conSelect.value)">
-                                                    <mat-option value="CurLandlord">Current Landlord</mat-option>
-                                                    <mat-option value="PreLandloard">Prev. Landloard</mat-option>
-                                                    <mat-option value="Employer">Employer</mat-option>
-                                                    <mat-option value="Other">Other</mat-option>
+                                                <mat-select formControlName="type" #conSelect (selectionChange)="onContactChange(conSelect.value)">
+                                                    <mat-option [value]=1>Prev. Landloard</mat-option>
+                                                    <mat-option [value]=2>Current Landlord</mat-option>
+
+                                                    <mat-option [value]=3>Employer</mat-option>
+                                                    <mat-option [value]=4>Other</mat-option>
                                                 </mat-select>
                                             </mat-form-field>
                                         </div>
                                         <div style="width: 50%;">
                                             <mat-form-field class="form-content">
                                                 <mat-icon matSuffix>person</mat-icon>
-                                                <input formControlName="refName" matInput placeholder="Contact Name">
+                                                <input formControlName="contactName" matInput placeholder="Contact Name">
                                             </mat-form-field>
                                         </div>
                                     </div>
                                     <div class="field-container" style="margin-left: 4px;margin-top: 5px;">
                                         <mat-form-field class="form-content" *ngIf="employerType">
                                             <mat-icon matSuffix>account_balance</mat-icon>
-                                            <input formControlName="refEmpName" matInput placeholder="Employer Name (Company)">
+                                            <input formControlName="contactEntityName" matInput placeholder="Employer Name (Company)">
                                         </mat-form-field>
                                     </div>
                                     <!-- <div class="field-container" style="margin-left: 4px;margin-top: 15px;">
@@ -507,13 +508,13 @@
                                         <div style="width: 45%;">
                                             <mat-form-field class="form-content">
                                                 <mat-icon matSuffix>mail</mat-icon>
-                                                <input formControlName="refEmail" matInput placeholder="Email">
+                                                <input formControlName="contactEmail" matInput placeholder="Email">
                                             </mat-form-field>
                                         </div>
                                         <div style="width: 50%;">
                                             <mat-form-field class="form-content">
                                                 <mat-icon matSuffix>phone</mat-icon>
-                                                <input formControlName="refTel" matInput placeholder="Tel">
+                                                <input formControlName="contactTel" matInput placeholder="Tel">
                                             </mat-form-field>
                                         </div>
                                     </div>
@@ -521,7 +522,7 @@
                                         <div style="width: 100%;">
                                             <mat-form-field class="form-content">
                                                 <mat-icon matSuffix>assignment</mat-icon>
-                                                <input formControlName="refNotes" matInput placeholder="Note">
+                                                <input formControlName="notes" matInput placeholder="Note">
                                             </mat-form-field>
                                         </div>
                                     </div>
