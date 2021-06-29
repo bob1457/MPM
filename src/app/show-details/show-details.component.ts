@@ -61,10 +61,10 @@ export class ShowDetailsComponent implements OnInit {
 
     this.appForm = this.formBuilder.group({
 
-      applicants: this.formBuilder.array([]),
+      coApplicants: this.formBuilder.array([]),
       previousAddrsses: this.formBuilder.array([]),
-      children: this.formBuilder.array([]),
-      references: this.formBuilder.array([]),
+      applicantChildren: this.formBuilder.array([]),
+      rentalReference: this.formBuilder.array([]),
 
       rentalPropertyId: [],
       firstName: ['', Validators.required],
@@ -127,16 +127,16 @@ export class ShowDetailsComponent implements OnInit {
     });
   }
 
-  applicants(): FormArray {
-    return this.appForm.get('applicants') as FormArray;
+  coApplicants(): FormArray {
+    return this.appForm.get('coApplicants') as FormArray;
   }
 
-  children(): FormArray{
-    return this.appForm.get('children') as FormArray;
+  applicantChildren(): FormArray{
+    return this.appForm.get('applicantChildren') as FormArray;
   }
 
-  references(): FormArray{
-    return this.appForm.get('references') as FormArray;
+  rentalReference(): FormArray{
+    return this.appForm.get('rentalReference') as FormArray;
   }
 
   newApplicant(): FormGroup {
@@ -176,27 +176,27 @@ export class ShowDetailsComponent implements OnInit {
   }
 
   addApplicant() {
-    this.applicants().push(this.newApplicant());
+    this.coApplicants().push(this.newApplicant());
   }
 
   addChild() {
-    this.children().push(this.newChild());
+    this.applicantChildren().push(this.newChild());
   }
 
   addReference() {
-    this.references().push(this.newReference());
+    this.rentalReference().push(this.newReference());
   }
 
   removeApplicant(applicantIndex: number) {
-    this.applicants().removeAt(applicantIndex);
+    this.coApplicants().removeAt(applicantIndex);
   }
 
   removeChild(childIndex: number) {
-    this.children().removeAt(childIndex);
+    this.applicantChildren().removeAt(childIndex);
   }
 
   removeRefernence(refIndex: number) {
-    this.references().removeAt(refIndex);
+    this.rentalReference().removeAt(refIndex);
   }
 
 
@@ -243,18 +243,18 @@ export class ShowDetailsComponent implements OnInit {
   }
 
   submit() {
-    // debugger;
+    debugger;
     this.loading = true;
     this.appForm.get('rentalPropertyId').setValue(this.listing.rentalProperty.id);
     console.log('form', this.appForm.value);
 
-    // this.propertyService.SentRentalApplication(this.appForm.value) // For testing
-    //                     .subscribe(res => {
-    //                       this.result = res;
-    //                       // console.log('res', this.result);
-    //                       this.loading = false;
-    //                       this.openSnackBar('Application submitted! Check your email or text for confirmation.', '');
-    //                     });
+    this.propertyService.SentRentalApplication(this.appForm.value) // For testing
+                        .subscribe(res => {
+                          this.result = res;
+                          // console.log('res', this.result);
+                          this.loading = false;
+                          this.openSnackBar('Application submitted! Check your email or text for confirmation.', 'close');
+                        });
 
 
 // ******Testing code ******************************

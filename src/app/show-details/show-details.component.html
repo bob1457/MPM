@@ -214,8 +214,8 @@
                             </div>
                         </div>
                         <!-- Form Array for co-applicatn -->
-                        <div formArrayName="applicants" id="applicants">
-                            <div *ngFor="let applicant of applicants().controls; let applicantIndex=index" style="margin-bottom: 5px;">
+                        <div formArrayName="coApplicants" id="applicants">
+                            <div *ngFor="let applicant of coApplicants().controls; let applicantIndex=index" style="margin-bottom: 5px;">
                                 <div [formGroupName]="applicantIndex" style="margin-left: 25px; border: 1px solid blue; padding-left: 7px;padding-right: 7px;">
                                     <mat-icon style="color: orangered; cursor: pointer;" (click)="removeApplicant(applicantIndex)">clear</mat-icon>
                                     <div class="field-container" style="margin-left: 4px;margin-top: 15px;">
@@ -389,8 +389,8 @@
                             </div>
 
                         </div>
-                        <div formArrayName="children" id="children">
-                            <div *ngFor="let child of children().controls; let childIndex=index" style="margin-bottom: 5px;">
+                        <div formArrayName="applicantChildren" id="children">
+                            <div *ngFor="let child of applicantChildren().controls; let childIndex=index" style="margin-bottom: 5px;">
                                 <div [formGroupName]="childIndex" style="margin-left: 25px; border: 1px solid blue; padding-left: 7px;padding-right: 7px;">
                                     <mat-icon style="color: orangered; cursor: pointer;" (click)="removeChild(childIndex)">clear</mat-icon>
                                     <div class="field-container" style="margin-left: 4px;margin-top: 15px;">
@@ -461,8 +461,8 @@
                             <button type="button" mat-stroked-button style="margin-top: 10px;" (click)="addReference(refIndex)">Add Reference</button>
                         </div>
 
-                        <div formArrayName="references" id="references">
-                            <div *ngFor="let ref of references().controls; let refIndex=index" style="margin-bottom: 5px;">
+                        <div formArrayName="rentalReference" id="references">
+                            <div *ngFor="let ref of rentalReference().controls; let refIndex=index" style="margin-bottom: 5px;">
                                 <div [formGroupName]="refIndex" style="margin-left: 25px; border: 1px solid blue; padding-left: 7px;padding-right: 7px;">
                                     <mat-icon style="color: orangered; cursor: pointer;" (click)="removeRefernence(refIndex)">clear</mat-icon>
                                     <div class="field-container" style="margin-left: 4px;margin-top: 15px;">
