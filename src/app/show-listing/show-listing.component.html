@@ -41,12 +41,17 @@
         </div>
 
 
-        <div *ngIf="!(listing$ | async)">
+        <!-- <div *ngIf="!(listing$ | async) || (listing$ | async).lenght === 0">
             <p>
                 No listing at this time!
             </p>
-        </div>
+        </div> -->
     </div>
+</div>
+<div *ngIf="!(listing$ | async) || (listing$ | async).lenght === 0">
+    <p>
+        No listing at this time!
+    </p>
 </div>
 <ng-template #loading>
     <p style="text-align: center; margin-top: 10px;">
