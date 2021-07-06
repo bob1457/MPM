@@ -29,7 +29,7 @@
                         <ul style="list-style: none;">
                             <!-- <a  > -->
                             <a *ngFor="let img of listing.rentalProperty.propertyImg let i = index;" style="display: inline;cursor: pointer;" (click)="showFullsize(i)">
-                                <img attr.src="{{serverUrl}}{{img.propertyImgUrl}}" width="50px" height="50px" style="margin-right: 5px;">
+                                <img attr.src="{{serverUrl}}{{img.propertyImgUrl}}" width="50px" height="50px" style="margin-right: 5px;margin-bottom: 5px;">
                                 <!-- {{i}} -->
                             </a>
                             <!-- </a> -->
