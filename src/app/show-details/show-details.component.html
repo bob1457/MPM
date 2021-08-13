@@ -200,7 +200,7 @@
                             <div style="width: 30%;">
                                 <mat-form-field class="form-content">
                                     <mat-label>Number of people</mat-label>
-                                    <mat-select formControlName="numberOfOccupant" #mySelect10 (selectionChange)="onOccupantChange(mySelect10.value)">
+                                    <mat-select formControlName="numberOfOccupant" #mySelect15 (selectionChange)="onOccupantChange(mySelect15.value)">
                                         <mat-option [value]=1>1</mat-option>
                                         <mat-option [value]=2>2</mat-option>
                                         <mat-option [value]=3>3</mat-option>
@@ -359,11 +359,17 @@
                                         <!-- <mat-option [value]=0></mat-option> -->
                                         <mat-option value="equifax">Equifax</mat-option>
                                         <mat-option value="transunion">Transunion</mat-option>
-
+                                        <mat-option value="creditkara">Credit Karma</mat-option>
+                                        <mat-option value="other">Other</mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
                         </div>
+
+                        <mat-form-field class="form-content">
+                            <mat-icon matSuffix>save_alt</mat-icon>
+                            <input formControlName="annualIncome" type="number" matInput placeholder="Annual Income">
+                        </mat-form-field>
 
                         <!-- <mat-form-field class="form-content">
                             <mat-label>Imigration Status</mat-label>
@@ -434,6 +440,109 @@
                             </div>
                         </div>
 
+                        <div style="width: 70%;margin-left: 15px;margin-bottom: 5px;">
+                            <button type="button" mat-stroked-button style="margin-top: 10px;" (click)="addAddress(refIndex)">Add Current & Previous Address</button>
+                        </div>
+
+                        <div formArrayName="previousAddress" id="address">
+                            <div *ngFor="let address of previousAddress().controls; let addressIndex=index" style="margin-bottom: 5px;">
+                                <div [formGroupName]="addressIndex" style="margin-left: 25px; border: 1px solid blue; padding-left: 7px;padding-right: 7px;">
+                                    <mat-icon style="color: orangered; cursor: pointer;" (click)="removeAddress(addressIndex)">clear</mat-icon>
+                                    <div lass="field-container" style="margin-left: 4px;display: flex;">
+                                        <div style="width: 50%;">
+                                            <mat-checkbox formControlName="isCurrent">Current</mat-checkbox>
+                                        </div>
+                                        <div style="width: 50%;">
+                                            <mat-checkbox formControlName="isRented">Rented</mat-checkbox>
+                                        </div>
+                                    </div>
+                                    <div class="field-container" style="margin-left: 4px;">
+                                        <!-- <div style="width: 10%;">
+                                            {{applicantIndex + 2}}
+                                        </div> -->
+                                        <div style="width: 100%;">
+                                            <mat-form-field class="form-content">
+                                                <mat-icon matSuffix>article</mat-icon>
+                                                <input formControlName="streetNumber" matInput placeholder="Street Number">
+                                            </mat-form-field>
+                                        </div>
+                                        <!-- <div style="width: 35%;">
+                                            <mat-form-field class="form-content">
+                                                <mat-icon matSuffix>person</mat-icon>
+                                                <input formControlName="city" matInput placeholder="City">
+                                            </mat-form-field>
+                                        </div> -->
+                                    </div>
+                                    <div class="field-container" style="margin-left: 4px;">
+                                        <!-- <div style="width: 10%;">
+                                            {{applicantIndex + 2}}
+                                        </div> -->
+                                        <div style="width: 50%;">
+                                            <mat-form-field class="form-content">
+                                                <mat-icon matSuffix>article</mat-icon>
+                                                <input formControlName="city" matInput placeholder="City">
+                                            </mat-form-field>
+                                        </div>
+                                        <div style="width: 50%;">
+                                            <mat-form-field class="form-content">
+                                                <mat-icon matSuffix>article</mat-icon>
+                                                <input formControlName="provinceState" matInput placeholder="Province/State">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="field-container" style="margin-left: 4px;">
+                                        <!-- <div style="width: 10%;">
+                                            {{applicantIndex + 2}}
+                                        </div> -->
+                                        <div style="width: 50%;">
+                                            <mat-form-field class="form-content">
+                                                <mat-icon matSuffix>article</mat-icon>
+                                                <input formControlName="postZipCode" matInput placeholder="Post/Zip Code">
+                                            </mat-form-field>
+                                        </div>
+                                        <div style="width: 50%;">
+                                            <mat-form-field class="form-content">
+                                                <mat-icon matSuffix>article</mat-icon>
+                                                <input formControlName="country" matInput placeholder="County">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="field-container" style="margin-left: 4px;">
+                                        <!-- <div style="width: 10%;">
+                                            {{applicantIndex + 2}}
+                                        </div> -->
+                                        <div style="width: 50%;">
+                                            <mat-form-field class="form-content">
+                                                <mat-icon matSuffix>article</mat-icon>
+                                                <input formControlName="lengthOfLiving" matInput placeholder="How long living here (year(s))">
+                                            </mat-form-field>
+                                        </div>
+                                        <div style="width: 50%;">
+                                            <mat-form-field class="form-content">
+                                                <mat-icon matSuffix>article</mat-icon>
+                                                <input formControlName="rentAmount" matInput placeholder="Monthly Rent">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field-container">
+                            <div style="width: 40%;">
+                                <mat-form-field class="form-content">
+                                    <mat-label>Number of vehicles owned</mat-label>
+                                    <mat-select formControlName="numberOfVehicles" #mySelect10 (selectionChange)="onVehicleChange(mySelect10.value)">
+                                        <mat-option [value]=0>0</mat-option>
+                                        <mat-option [value]=1>1</mat-option>
+                                        <mat-option [value]=2>2</mat-option>
+                                        <mat-option [value]=3>3</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <!-- <div style="width: 70%;margin-left: 30px;" *ngIf="applicantNumber > 1">
+                                <button type="button" mat-stroked-button (click)="addApplicant()">Add Co-Applicant</button>
+                            </div> -->
+                        </div>
 
 
 
@@ -448,10 +557,10 @@
                             </mat-select>
                         </mat-form-field> -->
 
-                        <mat-form-field class="form-content">
+                        <!-- <mat-form-field class="form-content">
                             <mat-icon matSuffix>save_alt</mat-icon>
                             <input formControlName="annualIncome" type="number" matInput placeholder="Annual Income">
-                        </mat-form-field>
+                        </mat-form-field> -->
 
                         <mat-form-field class="form-content">
                             <textarea formControlName="reasonToMove" matInput placeholder="Reason to move"></textarea>

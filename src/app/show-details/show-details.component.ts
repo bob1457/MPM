@@ -62,7 +62,7 @@ export class ShowDetailsComponent implements OnInit {
     this.appForm = this.formBuilder.group({
 
       coApplicants: this.formBuilder.array([]),
-      previousAddrsses: this.formBuilder.array([]),
+      previousAddress: this.formBuilder.array([]),
       applicantChildren: this.formBuilder.array([]),
       rentalReference: this.formBuilder.array([]),
 
@@ -87,6 +87,7 @@ export class ShowDetailsComponent implements OnInit {
       contactOthers: [''],
       annualIncome: ['', Validators.required],
       numberOfOccupant: [1],
+      numberOfVehicles: [0],
       withChildren: [false],
       status: [1],
       appStatus: [1],
@@ -131,6 +132,10 @@ export class ShowDetailsComponent implements OnInit {
     return this.appForm.get('coApplicants') as FormArray;
   }
 
+  previousAddress(): FormArray {
+    return this.appForm.get('previousAddress') as FormArray;
+  }
+
   applicantChildren(): FormArray{
     return this.appForm.get('applicantChildren') as FormArray;
   }
@@ -166,6 +171,20 @@ export class ShowDetailsComponent implements OnInit {
     });
   }
 
+  newAddress(): FormGroup {
+    return this.formBuilder.group({
+      streetNumber: [''],
+      city: [''],
+      provinceState: [''],
+      postZipCode: [''],
+      country: [''],
+      lengthOfLiving: Number([0]),
+      rentAmount: [0.0],
+      isCurrent: [false],
+      isRented: [true]
+    });
+  }
+
   newChild(): FormGroup {
     return this.formBuilder.group({
       firstName: [''],
@@ -185,6 +204,14 @@ export class ShowDetailsComponent implements OnInit {
 
   addReference() {
     this.rentalReference().push(this.newReference());
+  }
+
+  addAddress() {
+    this.previousAddress().push(this.newAddress());
+  }
+
+  removeAddress(addressIndex: number) {
+    this.previousAddress().removeAt(addressIndex);
   }
 
   removeApplicant(applicantIndex: number) {
