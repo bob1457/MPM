@@ -257,6 +257,7 @@ export class ShowDetailsComponent implements OnInit {
   }
 
   onCreditSourceChange(value) {
+    console.log('credit provider', value);
     this.appForm.get('creditSource').setValue(value);
   }
 
@@ -275,13 +276,13 @@ export class ShowDetailsComponent implements OnInit {
     this.appForm.get('rentalPropertyId').setValue(this.listing.rentalProperty.id);
     console.log('form', this.appForm.value);
 
-    this.propertyService.SentRentalApplication(this.appForm.value) // For testing
-                        .subscribe(res => {
-                          this.result = res;
-                          // console.log('res', this.result);
-                          this.loading = false;
-                          this.openSnackBar('Application submitted! Check your email or text for confirmation.', 'close');
-                        });
+    // this.propertyService.SentRentalApplication(this.appForm.value) // For testing
+    //                     .subscribe(res => {
+    //                       this.result = res;
+    //                       // console.log('res', this.result);
+    //                       this.loading = false;
+    //                       this.openSnackBar('Application submitted! Check your email or text for confirmation.', 'close');
+    //                     });
 
 
 // ******Testing code ******************************
@@ -345,6 +346,9 @@ export class ShowDetailsComponent implements OnInit {
   onOccupantChange(value) {
     console.log('peopele', value);
     this.applicantNumber = value;
+    if (value > 1) {
+      this.appForm.get('')
+    }
   }
 
   removeAll() {

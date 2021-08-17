@@ -359,7 +359,7 @@
                                         <!-- <mat-option [value]=0></mat-option> -->
                                         <mat-option value="equifax">Equifax</mat-option>
                                         <mat-option value="transunion">Transunion</mat-option>
-                                        <mat-option value="creditkara">Credit Karma</mat-option>
+                                        <mat-option value="creditkarma">Credit Karma</mat-option>
                                         <mat-option value="other">Other</mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -453,7 +453,7 @@
                                             <mat-checkbox formControlName="isCurrent">Current</mat-checkbox>
                                         </div>
                                         <div style="width: 50%;">
-                                            <mat-checkbox formControlName="isRented">Rented</mat-checkbox>
+                                            <mat-checkbox formControlName="isRented" [checked]="isRented">Rented</mat-checkbox>
                                         </div>
                                     </div>
                                     <div class="field-container" style="margin-left: 4px;">
@@ -531,7 +531,7 @@
                             <div style="width: 40%;">
                                 <mat-form-field class="form-content">
                                     <mat-label>Number of vehicles owned</mat-label>
-                                    <mat-select formControlName="numberOfVehicles" #mySelect10 (selectionChange)="onVehicleChange(mySelect10.value)">
+                                    <mat-select formControlName="numberOfVehicles">
                                         <mat-option [value]=0>0</mat-option>
                                         <mat-option [value]=1>1</mat-option>
                                         <mat-option [value]=2>2</mat-option>
@@ -539,9 +539,9 @@
                                     </mat-select>
                                 </mat-form-field>
                             </div>
-                            <!-- <div style="width: 70%;margin-left: 30px;" *ngIf="applicantNumber > 1">
+                            <!-- <div style="width: 70%;margin-left: 30px;" *ngIf="applicantNumber > 1">  (selectionChange)="onVehicleChange(mySelect10.value)"
                                 <button type="button" mat-stroked-button (click)="addApplicant()">Add Co-Applicant</button>
-                            </div> -->
+                            </div> #mySelect10-->
                         </div>
 
 
