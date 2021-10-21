@@ -30,6 +30,7 @@ export class ShowDetailsComponent implements OnInit {
   showRegister = false;
   withChildren = false;
   applicantNumber = 1;
+  notification = false;
 
   serverUrl = 'http://localhost:63899/';
 
@@ -96,6 +97,7 @@ export class ShowDetailsComponent implements OnInit {
       empoyedStatus: ['', Validators.required],
       notificationType: [1],
       reasonToMove: [''],
+      notificationRequired: false,
 
 // Workaround for getting rid of error when getting fields from form array, need to figure out later
       gender: [''],
@@ -276,13 +278,13 @@ export class ShowDetailsComponent implements OnInit {
     this.appForm.get('rentalPropertyId').setValue(this.listing.rentalProperty.id);
     console.log('form', this.appForm.value);
 
-    // this.propertyService.SentRentalApplication(this.appForm.value) // For testing
-    //                     .subscribe(res => {
-    //                       this.result = res;
-    //                       // console.log('res', this.result);
-    //                       this.loading = false;
-    //                       this.openSnackBar('Application submitted! Check your email or text for confirmation.', 'close');
-    //                     });
+    this.propertyService.SentRentalApplication(this.appForm.value) // For testing
+                        .subscribe(res => {
+                          this.result = res;
+                          // console.log('res', this.result);
+                          this.loading = false;
+                          this.openSnackBar('Application submitted! Check your email or text for confirmation.', 'close');
+                        });
 
 
 // ******Testing code ******************************
@@ -373,6 +375,12 @@ export class ShowDetailsComponent implements OnInit {
       item3.removeChild(item3.firstChild);
     }
 
+  }
+
+  onNotificationRquired (e) {
+    console.log('notification', e);
+    this.notification = e.checked;
+    console.log('checked', this.notification);
   }
 }
 
