@@ -31,6 +31,8 @@ export class ShowDetailsComponent implements OnInit {
   withChildren = false;
   applicantNumber = 1;
   notification = false;
+  listDesc;
+
 
   serverUrl = 'http://localhost:63899/';
 
@@ -40,6 +42,8 @@ export class ShowDetailsComponent implements OnInit {
   result = null;
 
   employerType;
+
+  uploadFiles = false;
 
   constructor(private location: Location,
               private actRoute: ActivatedRoute,
@@ -56,6 +60,7 @@ export class ShowDetailsComponent implements OnInit {
     this.propertyService.GetListingDetails(this.id)
         .subscribe( list => {
           this.listing = list;
+          this.listDesc = this.listing.listingDesc;
           console.log('listing', this.listing);
         });
 
@@ -381,6 +386,15 @@ export class ShowDetailsComponent implements OnInit {
     console.log('notification', e);
     this.notification = e.checked;
     console.log('checked', this.notification);
+  }
+
+  onUploadFileChange(e) {
+    this.uploadFiles = e.checked;
+    console.log('upload', this.uploadFiles);
+  }
+
+  fileBrowserHandler($event) {
+
   }
 }
 

@@ -55,3 +55,35 @@
     margin-right: auto;
     width: 90%;
 }
+
+.dropZone {
+    padding: 20px;
+    border: 1px solid;
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+
+.e-toolbar-wrapper {
+    height: 0px !important;
+}
+
+.e-control.e-richtexteditor {
+    border: none;
+}
+
+.e-control.e-richtexteditor .e-rte-content {
+    border: none;
+}
+
+// .e-richtexteditor .e-rte-content .e-content,
+// .e-richtexteditor .e-source-content .e-content {
+//     // overflow-y: scroll;
+//     height: 460px;
+// }
+.e-richtexteditor .e-rte-hidden {
+    display: none;
+}
+
+.e-toolbar-item .e-template .e-toolbar-popup {
+    display: none !important;
+}

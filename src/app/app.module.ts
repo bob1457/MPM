@@ -15,7 +15,7 @@ import { PropertyComponent } from './property/property.component';
 import { ClientServiceComponent } from './client-service/client-service.component';
 import { ShowDetailsComponent } from './show-details/show-details.component';
 import { ShowListingComponent } from './show-listing/show-listing.component';
-
+import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
 
 
 @NgModule({
@@ -37,7 +37,8 @@ import { ShowListingComponent } from './show-listing/show-listing.component';
     FlexLayoutModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RichTextEditorAllModule
   ],
   providers: [
     // OidcConfigService,

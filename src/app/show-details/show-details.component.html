@@ -142,8 +142,14 @@
                     </p>
                 </div>
             </div>
-            <div class="col-md-7">
-                {{listing.listingDesc}}
+            <div class="col-md-7" [innerHTML]="listDesc">
+                <!-- {{listing.listingDesc}} -->
+                <!-- <ejs-richtexteditor height="400px" readonly="true" id='defaultRTE'[(value)]='listDesc'>
+                    <ng-template #valueTemplate>
+                        {{listing.listingDesc}}
+                    </ng-template>
+
+                </ejs-richtexteditor> -->
             </div>
         </div>
 
@@ -641,7 +647,15 @@
                         </div>
 
 
-
+                        <div style="margin-left: 15px;">
+                            <mat-checkbox (change)="onUploadFileChange($event)">Upload Supporting Documents</mat-checkbox>
+                        </div>
+                        <div *ngIf="uploadFiles" class="dropZone">
+                            <div>Drag and drop files here or</div>
+                            <div></div>
+                            <label for="fieDropRef">Browser for file</label>
+                            <input type="file" #fieDropRef id="fieDropRef" multiple (change)="fileBrowserHandler($event.target.files)" />
+                        </div>
                         <div style="margin-left: 15px;">
                             <mat-checkbox formControlName="notificationRequired" (change)="onNotificationRquired($event)">Send Notification</mat-checkbox>
                         </div>
